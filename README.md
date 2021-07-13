@@ -3,7 +3,7 @@ Projet fin d'année de web3 (API)
 
 ### Basic commands
 
-Then, install dependencies:
+install dependencies:
 
 #### Normal
 
