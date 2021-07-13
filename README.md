@@ -11,12 +11,6 @@ install dependencies:
 composer install
 ```
 
-#### Makefile
-
-```shell script
-make install
-```
-
 ---
 
 Create the Database:
@@ -25,12 +19,6 @@ Create the Database:
 
 ```shell script
 ./bin/console doctrine:database:create
-```
-
-#### Makefile
-
-```shell script
-make db-create
 ```
 
 ---
@@ -43,12 +31,6 @@ Execute the last migration:
 ./bin/console doctrine:migration:migrate
 ```
 
-#### Makefile
-
-```shell script
-make db-migration
-```
-
 ---
 
 Launch the server:
@@ -57,12 +39,6 @@ Launch the server:
 
 ```shell script
 symfony server:start
-```
-
-#### Makefile way
-
-```shell script
-make start
 ```
 
 Stop the server:
