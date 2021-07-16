@@ -47,4 +47,20 @@ class ApiController extends AbstractController
         }
         return new JsonResponse($response);
     }
+
+  /**
+   * @Route("/api/dashboard/statsincidents/{id_building}", name="futureEvent")
+   */
+  public function getStatsIncidents(int $id_building, IncidentRepository $incidentRepository): JsonResponse
+  {
+    $response = array();
+    $results = $incidentRepository->findIncidentByIdBuilding($id_building);
+
+    dump($results);
+
+    foreach ($results as $result) {
+
+    }
+    return new JsonResponse($response);
+  }
 }
