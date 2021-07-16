@@ -35,17 +35,17 @@ class Classroom
     private $zone;
 
     /**
-     * @ORM\ManyToOne(targetEntity=building::class, inversedBy="classrooms")
+     * @ORM\ManyToOne(targetEntity="Building", inversedBy="classrooms")
      */
     private $building;
 
     /**
-     * @ORM\OneToMany(targetEntity=Sensor::class, mappedBy="classroom")
+     * @ORM\OneToMany(targetEntity="Sensor", mappedBy="classroom")
      */
     private $sensors;
 
     /**
-     * @ORM\OneToMany(targetEntity=Incident::class, mappedBy="classroom")
+     * @ORM\OneToMany(targetEntity="Incident", mappedBy="classroom")
      */
     private $incidents;
 

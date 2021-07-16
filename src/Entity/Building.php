@@ -45,12 +45,12 @@ class Building
     private $address;
 
     /**
-     * @ORM\OneToOne(targetEntity=manager::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="Manager", cascade={"persist", "remove"})
      */
     private $manager;
 
     /**
-     * @ORM\OneToMany(targetEntity=Classroom::class, mappedBy="building")
+     * @ORM\OneToMany(targetEntity="Classroom", mappedBy="building")
      */
     private $classrooms;
 

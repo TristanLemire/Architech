@@ -38,7 +38,7 @@ class Incident
     private $status;
 
     /**
-     * @ORM\ManyToOne(targetEntity=classroom::class, inversedBy="incidents")
+     * @ORM\ManyToOne(targetEntity="Classroom", inversedBy="incidents")
      */
     private $classroom;
 

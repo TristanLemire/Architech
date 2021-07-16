@@ -28,7 +28,7 @@ class Sensor
     private $node_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=classroom::class, inversedBy="sensors")
+     * @ORM\ManyToOne(targetEntity="Classroom", inversedBy="sensors")
      */
     private $classroom;
 

@@ -28,7 +28,7 @@ class Intervention
     private $company;
 
     /**
-     * @ORM\OneToOne(targetEntity=incident::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="Incident", cascade={"persist", "remove"})
      */
     private $incident;
 
