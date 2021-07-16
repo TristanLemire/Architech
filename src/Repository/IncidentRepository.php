@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Incident;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr;
 
 /**
  * @method Incident|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,24 @@ class IncidentRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Incident::class);
+    }
+
+    public function findIncidentByIdBuilding(int $id_building): array
+    {
+        $results = $this->createQueryBuilder('i')
+            ->select('
+          i.type, 
+          c.name,
+          c.floor,
+          c.zone
+          ')
+            ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
+            ->innerJoin('App\Entity\building', 'b',   Expr\Join::WITH,  'c.building = b.id')
+            ->where('(MONTH(i.date) = (MONTH(CURRENT_DATE())) OR MONTH(i.date) = (MONTH(CURRENT_DATE()) - 1))')
+            ->getQuery()
+            ->getResult();
+
+        return $results;
     }
 
     // /**
