@@ -44,7 +44,7 @@ class ApiController extends AbstractController
                 'incident_type' => $result["type"],
                 'incident_status' => $result["status"],
                 'intervention_datetime' => $result["datetime"],
-                'intervention_datetime_company' => $result["company"],
+                'intervention_company' => $result["company"],
                 'classroom_name' => $result["name"],
                 'classroom_floor' => $result["floor"],
                 'classroom_zone' => $result["zone"],
