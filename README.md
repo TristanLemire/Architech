@@ -48,3 +48,12 @@ make stop
 ```
 
 ---
+
+
+## SQL
+
+### Notre MCD 
+![alt text](https://github.com/TristanLemire/Architech/blob/main/MCD-MLD/MCD.png "MCD")
+
+### Notre MLD
+![alt text](https://github.com/TristanLemire/Architech/blob/main/MCD-MLD/MLD.png "MLD")
