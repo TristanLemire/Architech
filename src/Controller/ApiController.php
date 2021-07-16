@@ -38,11 +38,18 @@ class ApiController extends AbstractController
         $response = array();
             $results = $interventionRepository->futurEvent($id_building);
 
-            dump($results);
+        //'a.id, a.type, i.datetime, i.company, c.name, c.floor, c.zone, a.status')
 
         foreach ($results as $result) {
             $response[] = array(
-                'id' => $result->getId(),
+                'incident_id' => $result["id"],
+                'incident_type' => $result["type"],
+                'incident_status' => $result["status"],
+                'intervention_datetime' => $result["datetime"],
+                'intervention_datetime_company' => $result["company"],
+                'classroom_name' => $result["name"],
+                'classroom_floor' => $result["floor"],
+                'classroom_zone' => $result["zone"],
             );
         }
         return new JsonResponse($response);
