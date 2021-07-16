@@ -36,9 +36,7 @@ class ApiController extends AbstractController
     public function futureEvent(int $id_building, InterventionRepository $interventionRepository): JsonResponse
     {
         $response = array();
-            $results = $interventionRepository->futurEvent($id_building);
-
-        //'a.id, a.type, i.datetime, i.company, c.name, c.floor, c.zone, a.status')
+        $results = $interventionRepository->futurEvent($id_building);
 
         foreach ($results as $result) {
             $response[] = array(
@@ -55,19 +53,18 @@ class ApiController extends AbstractController
         return new JsonResponse($response);
     }
 
-  /**
-   * @Route("/api/dashboard/statsincidents/{id_building}", name="futureEvent")
-   */
-  public function getStatsIncidents(int $id_building, IncidentRepository $incidentRepository): JsonResponse
-  {
-    $response = array();
-    $results = $incidentRepository->findIncidentByIdBuilding($id_building);
+    /**
+     * @Route("/api/dashboard/statsincidents/{id_building}", name="statsincidents")
+     */
+    public function getStatsIncidents(int $id_building, IncidentRepository $incidentRepository): JsonResponse
+    {
+        $response = array();
+        $results = $incidentRepository->findIncidentByIdBuilding($id_building);
 
-    dump($results);
+        dump($results);
 
-    foreach ($results as $result) {
-
+        foreach ($results as $result) {
+        }
+        return new JsonResponse($response);
     }
-    return new JsonResponse($response);
-  }
 }
