@@ -22,7 +22,7 @@ class ApiController extends AbstractController
         foreach ($results as $result) {
             $response[] = array(
                 'id' => $result->getId(),
-                'classroom_id' => $result->getClassroom(),
+                'classroom_id' => $result->getClassroom()->getId(),
                 'date' => $result->getDate(),
                 'type' => $result->getType(),
                 'status' => $result->getStatus(),

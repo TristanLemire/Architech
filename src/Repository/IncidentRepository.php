@@ -30,13 +30,6 @@ class IncidentRepository extends ServiceEntityRepository
         return $results;
     }
 
-    public function findAllIncident(): array
-    {
-
-        $results = $this->findAll();
-        return $results;
-    }
-
     // /**
     //  * @return Incident[] Returns an array of Incident objects
     //  */
