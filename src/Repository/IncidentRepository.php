@@ -19,17 +19,6 @@ class IncidentRepository extends ServiceEntityRepository
         parent::__construct($registry, Incident::class);
     }
 
-    public function findOneIncident(int $id): array
-    {
-        $results = $this->createQueryBuilder('i')
-            ->where('i.id = :id')
-            ->setParameter('id', $id)
-            ->getQuery()
-            ->getResult();
-
-        return $results;
-    }
-
     // /**
     //  * @return Incident[] Returns an array of Incident objects
     //  */

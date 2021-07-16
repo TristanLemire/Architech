@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Intervention;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr;
 
 /**
  * @method Intervention|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,22 @@ class InterventionRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Intervention::class);
+    }
+
+    public function futurEvent(int $id_building): array
+    {
+        $qb = $this->createQueryBuilder('i');
+        $qb->select('a.id, a.type, i.datetime, i.company, c.name, c.floor, c.zone, a.status')
+            ->innerJoin('App\Entity\Incident', 'a',   Expr\Join::WITH,  'a.id = i.incident')
+            ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'a.classroom = c.id')
+            ->innerJoin('App\Entity\Building', 'b',   Expr\Join::WITH,  'c.building = b.id')
+            ->where('a.status = :assign')
+            ->setParameter('assign', 'assign')
+            ->andWhere('b.id = :id_building')
+            ->setParameter('id_building', $id_building);
+
+        $query = $qb->getQuery();
+        return $query->getResult();
     }
 
     // /**
