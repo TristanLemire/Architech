@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\IncidentRepository;
+use App\Repository\BuildingRepository;
 use App\Repository\InterventionRepository;
 use App\Service\JsonMessage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -67,17 +68,67 @@ class ApiController extends AbstractController
      */
     public function getStatsIncidents(int $id_building, IncidentRepository $incidentRepository, JsonMessage $jsonMessage): JsonResponse
     {
-        $response = array();
+        $response = [];
         $results = $incidentRepository->findIncidentByIdBuilding($id_building);
 
         if (!$results) {
             return $jsonMessage->getEmptyDataMessage();
         }
 
-        dump($results);
+        $response['info'] = [
+          'total_incident' => count($results)
+        ];
 
         foreach ($results as $result) {
+            $response['incidents'][$result["type"]][] = [
+              'incident_id' => $result["id"],
+              'incident_title' => $result["title"],
+              'incident_date' => $result["date"]->format('Y-m-d H:i:s'),
+              'incident_type' => $result["type"],
+              'incident_status' => $result["status"],
+              'classroom_name' => $result["name"],
+              'classroom_floor' => $result["floor"],
+              'classroom_zone' => $result["zone"]
+            ];
         }
+
+        return new JsonResponse($response);
+    }
+
+    /**
+     * @Route("/api/dashboard/infobuilding/{id_building}", name="info_building")
+     */
+    public function getInfoBuilding(int $id_building, BuildingRepository $buildingRepository, JsonMessage $jsonMessage): JsonResponse
+    {
+        $response = [];
+        $results = $buildingRepository->findInfoByIdBuilding($id_building);
+
+        if (!$results) {
+            return $jsonMessage->getEmptyDataMessage();
+        }
+
+        foreach ($results as $result) {
+            $response = [
+              'manager' => [
+                'last_name' => $result['last_name'],
+                'first_name' => $result['first_name'],
+                'phone_manager' => $result['phone_manager'],
+                'gender' => $result['gender'],
+              ],
+              'building' => [
+                'name_building' => $result['name_building'],
+                'phone_building' => $result['phone_building'],
+                'address' => $result['address'],
+                'zipcode' => $result['zipcode'],
+                'city' => $result['city']
+              ],
+              'stats' => [
+                'number_rooms' => $result['number_rooms'],
+                'number_sensors' => $result['number_sensors'],
+              ]
+            ];
+        }
+
         return new JsonResponse($response);
     }
 }
