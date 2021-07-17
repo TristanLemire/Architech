@@ -17,9 +17,21 @@ Projet fin d'année de web3 (API)
 - Lancez l'api avec la commande : `symfony server:start`
 - Vous pouvez maintenant aller sur `http://127.0.0.1:8000/api`
 
+## Liste des routes disponibles :
+
+- Récupère toutes les prochaines interventions pour un bâtiment donné.
+```shell script
+`/api/dashboard/futureEvent/<BUILDING_ID>` 
+```
+
+- Récupère l'évolution annuelle des incidents pour un bâtiment donné.
+```shell script
+`/api/dashboard/futureEvent/<BUILDING_ID>` 
+```
+
 ### Basic commands
 
-install dependencies:
+Installer les dépendances:
 
 #### Normal
 
@@ -29,7 +41,7 @@ composer install
 
 ---
 
-Create the Database:
+Créer la base de données:
 
 #### Normal
 
@@ -39,7 +51,7 @@ Create the Database:
 
 ---
 
-Execute the last migration:
+Exécuter les dernières migrations:
 
 #### Normal
 
@@ -49,7 +61,7 @@ Execute the last migration:
 
 ---
 
-Launch the server:
+Lancer le serveur:
 
 #### Normal
 
@@ -57,7 +69,7 @@ Launch the server:
 symfony server:start
 ```
 
-Stop the server:
+Stopper le serveur:
 
 ```shell script
 make stop
