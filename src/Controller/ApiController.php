@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\IncidentRepository;
 use App\Repository\InterventionRepository;
+use App\Service\JsonMessage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,32 +12,16 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ApiController extends AbstractController
 {
     /**
-     * @Route("/api/{id}", name="api2")
-     */
-    public function statIncident(int $id, IncidentRepository $incidentRepository): JsonResponse
-    {
-        $response = array();
-        $results = $incidentRepository->findOneIncident($id);
-
-        foreach ($results as $result) {
-            $response[] = array(
-                'id' => $result->getId(),
-                'classroom_id' => $result->getClassroom()->getId(),
-                'date' => $result->getDate(),
-                'type' => $result->getType(),
-                'status' => $result->getStatus(),
-            );
-        }
-        return new JsonResponse($response);
-    }
-
-    /**
      * @Route("/api/dashboard/futureEvent/{id_building}", name="futureEvent")
      */
-    public function futureEvent(int $id_building, InterventionRepository $interventionRepository): JsonResponse
+    public function futureEvent(int $id_building, InterventionRepository $interventionRepository, JsonMessage $jsonMessage): JsonResponse
     {
         $response = array();
         $results = $interventionRepository->futurEvent($id_building);
+
+        if (!$results) {
+            return $jsonMessage->getEmptyDataMessage();
+        }
 
         foreach ($results as $result) {
             $response[] = array(
@@ -56,10 +41,14 @@ class ApiController extends AbstractController
     /**
      * @Route("/api/dashboard/annualEvolution/{id_building}", name="annualEvolution")
      */
-    public function annualEvolution(int $id_building, IncidentRepository $incidentRepository): JsonResponse
+    public function annualEvolution(int $id_building, IncidentRepository $incidentRepository, JsonMessage $jsonMessage): JsonResponse
     {
         $response = array();
         $results = $incidentRepository->annualEvolution($id_building);
+
+        if (!$results) {
+            return $jsonMessage->getEmptyDataMessage();
+        }
 
         foreach ($results as $result) {
             $response[] = array(
@@ -76,10 +65,14 @@ class ApiController extends AbstractController
     /**
      * @Route("/api/dashboard/statsincidents/{id_building}", name="statsincidents")
      */
-    public function getStatsIncidents(int $id_building, IncidentRepository $incidentRepository): JsonResponse
+    public function getStatsIncidents(int $id_building, IncidentRepository $incidentRepository, JsonMessage $jsonMessage): JsonResponse
     {
         $response = array();
         $results = $incidentRepository->findIncidentByIdBuilding($id_building);
+
+        if (!$results) {
+            return $jsonMessage->getEmptyDataMessage();
+        }
 
         dump($results);
 
