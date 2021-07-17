@@ -49,10 +49,11 @@ class IncidentRepository extends ServiceEntityRepository
         $qb->select('i')
             ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
             ->innerJoin('App\Entity\building', 'b',   Expr\Join::WITH,  'c.building = b.id')
-            ->where('DATEADD(DATEADD(LAST_DAY(CURRENT_DATE()),1, \'DAY\'),-1, \'MONTH\') <= i.date')
-            ->andWhere('i.date <= LAST_DAY(DATEADD(CURRENT_DATE(),11, \'MONTH\')) ')
+            ->where('i.date >= DATEADD(DATEADD(LAST_DAY(CURRENT_DATE()),1,\'DAY\'),-12,\'MONTH\')')
+            ->andWhere('i.date <= LAST_DAY(CURRENT_DATE()) ')
             ->andWhere('b.id = :id_building')
-            ->setParameter('id_building', $id_building);
+            ->setParameter('id_building', $id_building)
+            ->orderBy('i.date');
 
         $query = $qb->getQuery();
         return $query->getResult();

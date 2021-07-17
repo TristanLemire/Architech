@@ -31,7 +31,9 @@ class InterventionRepository extends ServiceEntityRepository
             ->setParameter('assign', 'assign')
             ->andWhere('b.id = :id_building')
             ->setParameter('id_building', $id_building)
-            ->andWhere('MONTH(i.datetime) = MONTH(CURRENT_DATE())');
+            ->andWhere('MONTH(i.datetime) = MONTH(CURRENT_DATE())')
+            ->andWhere('YEAR(i.datetime) = YEAR(CURRENT_DATE())')
+            ->orderBy('i.datetime');;
 
         $query = $qb->getQuery();
         return $query->getResult();
