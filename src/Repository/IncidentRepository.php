@@ -24,7 +24,10 @@ class IncidentRepository extends ServiceEntityRepository
     {
         $results = $this->createQueryBuilder('i')
             ->select('
-          i.type, 
+          i.type,
+          i.date,
+          i.type,
+          i.status,
           c.name,
           c.floor,
           c.zone
@@ -32,6 +35,8 @@ class IncidentRepository extends ServiceEntityRepository
             ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
             ->innerJoin('App\Entity\building', 'b',   Expr\Join::WITH,  'c.building = b.id')
             ->where('(MONTH(i.date) = (MONTH(CURRENT_DATE())) OR MONTH(i.date) = (MONTH(CURRENT_DATE()) - 1))')
+            ->andWhere('b.id = :id_building')
+            ->setParameter('id_building', $id_building)
             ->getQuery()
             ->getResult();
 
