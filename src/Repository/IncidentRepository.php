@@ -38,6 +38,21 @@ class IncidentRepository extends ServiceEntityRepository
         return $results;
     }
 
+    public function annualEvolution(int $id_building): array
+    {
+        $qb = $this->createQueryBuilder('i');
+        $qb->select('i')
+            ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
+            ->innerJoin('App\Entity\building', 'b',   Expr\Join::WITH,  'c.building = b.id')
+            ->where('DATEADD(DATEADD(LAST_DAY(CURRENT_DATE()),1, \'DAY\'),-1, \'MONTH\') <= i.date')
+            ->andWhere('i.date <= LAST_DAY(DATEADD(CURRENT_DATE(),11, \'MONTH\')) ')
+            ->andWhere('b.id = :id_building')
+            ->setParameter('id_building', $id_building);
+
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Incident[] Returns an array of Incident objects
     //  */
