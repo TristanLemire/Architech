@@ -20,8 +20,9 @@ class IncidentRepository extends ServiceEntityRepository
         parent::__construct($registry, Incident::class);
     }
 
-    public function findIncidentByIdBuilding(int $id_building): array
+    public function findIncidentByIdBuilding(int $id_building, $current_date = false): array
     {
+        $where_query = ($current_date) ? 'MONTH(i.date) = MONTH(CURRENT_DATE())' : 'MONTH(i.date) = MONTH(CURRENT_DATE()) - 1';
         $results = $this->createQueryBuilder('i')
           ->select('
                 i.id,
@@ -35,7 +36,7 @@ class IncidentRepository extends ServiceEntityRepository
                 ')
           ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
           ->innerJoin('App\Entity\building', 'b',   Expr\Join::WITH,  'c.building = b.id')
-          ->where('(MONTH(i.date) = (MONTH(CURRENT_DATE())) OR MONTH(i.date) = (MONTH(CURRENT_DATE()) - 1))')
+          ->where($where_query)
           ->andWhere('b.id = :id_building')
           ->setParameter('id_building', $id_building)
           ->getQuery()

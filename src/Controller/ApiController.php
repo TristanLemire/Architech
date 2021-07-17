@@ -69,15 +69,19 @@ class ApiController extends AbstractController
     public function getStatsIncidents(int $id_building, IncidentRepository $incidentRepository, JsonMessage $jsonMessage): JsonResponse
     {
         $response = [];
-        $results = $incidentRepository->findIncidentByIdBuilding($id_building);
+        $results_current_month = $incidentRepository->findIncidentByIdBuilding($id_building, true);
+        $results_prev_month = $incidentRepository->findIncidentByIdBuilding($id_building);
 
-        if (!$results) {
+        if (!$results_current_month && !$results_prev_month) {
             return $jsonMessage->getEmptyDataMessage();
         }
 
         $response['info'] = [
-          'total_incident' => count($results)
+            'total_incidents_current_month' => count($results_current_month),
+            'total_incidents_prev_month' => count($results_prev_month)
         ];
+
+        $results = array_merge($results_current_month,$results_prev_month);
 
         foreach ($results as $result) {
             $response['incidents'][$result["type"]][] = [
