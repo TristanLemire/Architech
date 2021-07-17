@@ -32,7 +32,7 @@ graphique
 - gestion de paramètres de détection d’incident
 - affichage des états des capteurs
 
-## 💪 Équipe Groupe 8 - Back
+## 💪 Équipe Groupe 8
 
 NOM | ROLE
 --- | ---
