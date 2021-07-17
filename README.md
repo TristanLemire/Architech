@@ -19,21 +19,19 @@ Projet fin d'année de web3 (API)
 
 ## Liste des routes disponibles :
 
-- Récupère toutes les prochaines interventions pour un bâtiment donné.
+### Récupère toutes les prochaines interventions pour un bâtiment donné.
 ```shell script
 `/api/dashboard/futureEvent/<BUILDING_ID>` 
 ```
 
-- Récupère l'évolution annuelle des incidents pour un bâtiment donné.
+### Récupère l'évolution annuelle des incidents pour un bâtiment donné.
 ```shell script
 `/api/dashboard/futureEvent/<BUILDING_ID>` 
 ```
 
-### Basic commands
+## Basic commands
 
-Installer les dépendances:
-
-#### Normal
+### Installer les dépendances:
 
 ```shell script
 composer install
@@ -41,9 +39,7 @@ composer install
 
 ---
 
-Créer la base de données:
-
-#### Normal
+### Créer la base de données:
 
 ```shell script
 ./bin/console doctrine:database:create
@@ -51,9 +47,7 @@ Créer la base de données:
 
 ---
 
-Exécuter les dernières migrations:
-
-#### Normal
+### Exécuter les dernières migrations:
 
 ```shell script
 ./bin/console doctrine:migration:migrate
@@ -61,15 +55,13 @@ Exécuter les dernières migrations:
 
 ---
 
-Lancer le serveur:
-
-#### Normal
+### Lancer le serveur:
 
 ```shell script
 symfony server:start
 ```
 
-Stopper le serveur:
+### Stopper le serveur:
 
 ```shell script
 make stop
