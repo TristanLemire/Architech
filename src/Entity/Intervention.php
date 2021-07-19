@@ -32,6 +32,16 @@ class Intervention
      */
     private $incident;
 
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $mail;
+
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $phone;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +79,30 @@ class Intervention
     public function setIncident(?incident $incident): self
     {
         $this->incident = $incident;
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(?string $mail): self
+    {
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
 
         return $this;
     }

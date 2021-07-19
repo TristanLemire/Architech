@@ -122,27 +122,27 @@ INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (21,11
 INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (22,9,'incident salle A204', '2020-7-6 15:06:56','heat_leak', 'assign');
 INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (23,8,'incident salle A203', '2020-6-7 16:07:56','high_humidity', 'assign');
 
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (1, 1, '2021-8-16 14:00:00', 'Humidity Controller');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (2, 3, '2021-7-8 10:00:00', 'Solar');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (3, 4, '2021-5-18 09:00:00', 'Breath of the wild');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (4, 5, '2021-7-8 16:00:00', 'Solar');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (5, 6, '2021-2-16 15:00:00', 'Humidity Controller');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (6, 8, '2021-7-16 17:00:00', 'Solar');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (7, 9, '2021-5-18 10:00:00', 'Breath of the wild');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (8, 10, '2021-3-17 11:30:00', 'Solar');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (9, 11, '2021-7-4 14:00:00', 'Humidity Controller');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (10, 12, '2021-9-10 09:00:00', 'Breath of the wild');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (11, 13, '2021-10-6 10:00:00', 'Solar');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (12, 14, '2021-11-27 14:00:00', 'Humidity Controller');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (13, 15, '2021-12-30 09:00:00', 'Breath of the wild');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (14, 16, '2021-1-15 10:00:00', 'Solar');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (15, 17, '2021-1-27 14:00:00', 'Humidity Controller');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (16, 18, '2020-12-30 09:00:00', 'Breath of the wild');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (17, 19, '2020-11-15 10:00:00', 'Solar');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (18, 20, '2020-10-27 14:00:00', 'Humidity Controller');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (19, 21, '2020-9-30 09:00:00', 'Breath of the wild');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (20, 22, '2020-8-15 10:00:00', 'Solar');
-INSERT INTO intervention (id, incident_id, datetime, company) VALUES (21, 23, '2020-7-27 14:00:00', 'Humidity Controller');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (1, 1, '2021-8-16 14:00:00', 'Humidity Controller', 'contact@humidityController.com', '0112345678');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (2, 3, '2021-7-8 10:00:00', 'Solar','contact@solar.com', '0109876543');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (3, 4, '2021-5-18 09:00:00', 'Breath of the wild', 'contact@breathofthewild.com','0134567890');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (4, 5, '2021-7-8 16:00:00', 'Solar','contact@solar.com', '0109876543');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (5, 6, '2021-2-16 15:00:00', 'Humidity Controller', 'contact@humidityController.com', '0112345678');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (6, 8, '2021-7-16 17:00:00', 'Solar','contact@solar.com', '0109876543');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (7, 9, '2021-5-18 10:00:00', 'Breath of the wild', 'contact@breathofthewild.com','0134567890');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (8, 10, '2021-3-17 11:30:00', 'Solar','contact@solar.com', '0109876543');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (9, 11, '2021-7-4 14:00:00', 'Humidity Controller', 'contact@humidityController.com', '0112345678');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (10, 12, '2021-9-10 09:00:00', 'Breath of the wild', 'contact@breathofthewild.com','0134567890');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (11, 13, '2021-10-6 10:00:00', 'Solar','contact@solar.com', '0109876543');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (12, 14, '2021-11-27 14:00:00', 'Humidity Controller', 'contact@humidityController.com', '0112345678');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (13, 15, '2021-12-30 09:00:00', 'Breath of the wild', 'contact@breathofthewild.com','0134567890');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (14, 16, '2021-1-15 10:00:00', 'Solar','contact@solar.com', '0109876543');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (15, 17, '2021-1-27 14:00:00', 'Humidity Controller', 'contact@humidityController.com', '0112345678');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (16, 18, '2020-12-30 09:00:00', 'Breath of the wild', 'contact@breathofthewild.com','0134567890');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (17, 19, '2020-11-15 10:00:00', 'Solar','contact@solar.com', '0109876543');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (18, 20, '2020-10-27 14:00:00', 'Humidity Controller', 'contact@humidityController.com', '0112345678');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (19, 21, '2020-9-30 09:00:00', 'Breath of the wild', 'contact@breathofthewild.com','0134567890');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (20, 22, '2020-8-15 10:00:00', 'Solar','contact@solar.com', '0109876543');
+INSERT INTO intervention (id, incident_id, datetime, company, mail, phone) VALUES (21, 23, '2020-7-27 14:00:00', 'Humidity Controller', 'contact@humidityController.com', '0112345678');
 
 
 
