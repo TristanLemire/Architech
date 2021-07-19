@@ -54,8 +54,6 @@ class ApiController extends AbstractController
 
 
     //     foreach ($results as $result) {
-
-
     //         if (array_key_exists($result->getDate()->format('m') . "-" . $result->getDate()->format('yy'), $response)) {
     //             array_push($response[$result->getDate()->format('m') . "-" . $result->getDate()->format('yy')], array(
     //                 'incident_id' => $result->getId(),
