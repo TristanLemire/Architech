@@ -37,6 +37,11 @@ class Manager
      */
     private $gender;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $mail;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Manager
     public function setGender(string $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(string $mail): self
+    {
+        $this->mail = $mail;
 
         return $this;
     }

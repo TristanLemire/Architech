@@ -118,6 +118,7 @@ class ApiController extends AbstractController
                     'first_name' => $result['first_name'],
                     'phone_manager' => $result['phone_manager'],
                     'gender' => $result['gender'],
+                    'manager_mail' => $result['mail'],
                 ],
                 'building' => [
                     'name_building' => $result['name_building'],

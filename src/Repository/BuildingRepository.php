@@ -34,6 +34,7 @@ class BuildingRepository extends ServiceEntityRepository
             m.first_name, 
             m.phone AS phone_manager, 
             m.gender,
+            m.mail AS manager_mail,
             COUNT(c.id) AS number_rooms, 
             COUNT(s.id) AS number_sensors
           ')
