@@ -54,6 +54,11 @@ class Building
      */
     private $classrooms;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $mail;
+
     public function __construct()
     {
         $this->classrooms = new ArrayCollection();
@@ -162,6 +167,18 @@ class Building
                 $classroom->setBuilding(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(string $mail): self
+    {
+        $this->mail = $mail;
 
         return $this;
     }

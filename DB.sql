@@ -1,6 +1,6 @@
 USE architech;
 
-INSERT INTO building (id, name, phone, city, zipcode, address) VALUES (1 ,'HETIC', '0176361007', 'Montreuil', '93100', '27 bis rue du Progrès');
+INSERT INTO building (id, name, phone, city, zipcode, address, mail) VALUES (1 ,'HETIC', '0176361007', 'Montreuil', '93100', '27 bis rue du Progrès', 'hetic@hetic.net');
 INSERT INTO manager (id, last_name, first_name, phone, gender) VALUES (1 , 'Sitterlé', 'Frédéric', '0671215007', 'male');
 UPDATE building set manager_id = 1 where id = 1;
 

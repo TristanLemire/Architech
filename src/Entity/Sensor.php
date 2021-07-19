@@ -32,6 +32,11 @@ class Sensor
      */
     private $classroom;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $sensor_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Sensor
     public function setClassroom(?classroom $classroom): self
     {
         $this->classroom = $classroom;
+
+        return $this;
+    }
+
+    public function getSensorId(): ?int
+    {
+        return $this->sensor_id;
+    }
+
+    public function setSensorId(int $sensor_id): self
+    {
+        $this->sensor_id = $sensor_id;
 
         return $this;
     }

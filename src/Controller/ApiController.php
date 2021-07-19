@@ -81,18 +81,18 @@ class ApiController extends AbstractController
             'total_incidents_prev_month' => count($results_prev_month)
         ];
 
-        $results = array_merge($results_current_month,$results_prev_month);
+        $results = array_merge($results_current_month, $results_prev_month);
 
         foreach ($results as $result) {
             $response['incidents'][$result["type"]][] = [
-              'incident_id' => $result["id"],
-              'incident_title' => $result["title"],
-              'incident_date' => $result["date"]->format('Y-m-d H:i:s'),
-              'incident_type' => $result["type"],
-              'incident_status' => $result["status"],
-              'classroom_name' => $result["name"],
-              'classroom_floor' => $result["floor"],
-              'classroom_zone' => $result["zone"]
+                'incident_id' => $result["id"],
+                'incident_title' => $result["title"],
+                'incident_date' => $result["date"]->format('Y-m-d H:i:s'),
+                'incident_type' => $result["type"],
+                'incident_status' => $result["status"],
+                'classroom_name' => $result["name"],
+                'classroom_floor' => $result["floor"],
+                'classroom_zone' => $result["zone"]
             ];
         }
 
@@ -113,23 +113,24 @@ class ApiController extends AbstractController
 
         foreach ($results as $result) {
             $response = [
-              'manager' => [
-                'last_name' => $result['last_name'],
-                'first_name' => $result['first_name'],
-                'phone_manager' => $result['phone_manager'],
-                'gender' => $result['gender'],
-              ],
-              'building' => [
-                'name_building' => $result['name_building'],
-                'phone_building' => $result['phone_building'],
-                'address' => $result['address'],
-                'zipcode' => $result['zipcode'],
-                'city' => $result['city']
-              ],
-              'stats' => [
-                'number_rooms' => $result['number_rooms'],
-                'number_sensors' => $result['number_sensors'],
-              ]
+                'manager' => [
+                    'last_name' => $result['last_name'],
+                    'first_name' => $result['first_name'],
+                    'phone_manager' => $result['phone_manager'],
+                    'gender' => $result['gender'],
+                ],
+                'building' => [
+                    'name_building' => $result['name_building'],
+                    'phone_building' => $result['phone_building'],
+                    'address' => $result['address'],
+                    'zipcode' => $result['zipcode'],
+                    'mail' => $result['mail'],
+                    'city' => $result['city']
+                ],
+                'stats' => [
+                    'number_rooms' => $result['number_rooms'],
+                    'number_sensors' => $result['number_sensors'],
+                ]
             ];
         }
 
