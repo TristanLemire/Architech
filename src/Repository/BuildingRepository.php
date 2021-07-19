@@ -23,7 +23,7 @@ class BuildingRepository extends ServiceEntityRepository
     public function findInfoByIdBuilding(int $id_building): array
     {
         $results = $this->createQueryBuilder('b')
-            ->select('
+          ->select('
             b.name as name_building, 
             b.phone as phone_building, 
             b.city, 
@@ -34,17 +34,22 @@ class BuildingRepository extends ServiceEntityRepository
             m.first_name, 
             m.phone AS phone_manager, 
             m.gender,
-            m.mail AS manager_mail,
-            COUNT(c.id) AS number_rooms, 
-            COUNT(s.id) AS number_sensors
+            m.mail AS manager_mail
           ')
-            ->leftJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'c.building = b.id')
-            ->leftJoin('App\Entity\Manager', 'm',   Expr\Join::WITH,  'b.manager = m.id')
-            ->leftJoin('App\Entity\Sensor', 's',   Expr\Join::WITH,  's.classroom = c.id')
-            ->where('b.id = :id_building')
-            ->setParameter('id_building', $id_building)
-            ->getQuery()
-            ->getResult();
+          ->addSelect('(SELECT COUNT(c.id)
+           FROM App\Entity\Classroom AS c
+           WHERE c.building = 1) AS number_rooms
+          ')
+          ->addSelect('(SELECT COUNT(s.id)
+           FROM App\Entity\Sensor AS s
+           WHERE s.classroom = 1) AS number_sensor
+          ')
+          ->leftJoin('App\Entity\Manager', 'm',   Expr\Join::WITH,  'b.manager = m.id')
+          ->where('b.id = :id_building')
+          ->setParameter('id_building', $id_building)
+          ->getQuery()
+          ->getResult();
+
 
         return $results;
     }

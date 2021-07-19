@@ -129,8 +129,8 @@ class ApiController extends AbstractController
                     'city' => $result['city']
                 ],
                 'stats' => [
-                    'number_rooms' => $result['number_rooms'],
-                    'number_sensors' => $result['number_sensors'],
+                    'number_rooms' => (int)$result['number_rooms'] ?? 0,
+                    'number_sensors' => (int)$result['number_sensor'] ?? 0,
                 ]
             ];
         }
