@@ -35,7 +35,7 @@ class IncidentRepository extends ServiceEntityRepository
                 c.zone
                 ')
           ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
-          ->innerJoin('App\Entity\building', 'b',   Expr\Join::WITH,  'c.building = b.id')
+          ->innerJoin('App\Entity\Building', 'b',   Expr\Join::WITH,  'c.building = b.id')
           ->where($where_query)
           ->andWhere('b.id = :id_building')
           ->setParameter('id_building', $id_building)
@@ -50,7 +50,7 @@ class IncidentRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('i');
         $qb->select('i')
             ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
-            ->innerJoin('App\Entity\building', 'b',   Expr\Join::WITH,  'c.building = b.id')
+            ->innerJoin('App\Entity\Building', 'b',   Expr\Join::WITH,  'c.building = b.id')
             ->where('i.date >= DATEADD(DATEADD(LAST_DAY(CURRENT_DATE()),1,\'DAY\'),-12,\'MONTH\')')
             ->andWhere('i.date <= LAST_DAY(CURRENT_DATE()) ')
             ->andWhere('b.id = :id_building')
