@@ -37,7 +37,7 @@ class ApiInfluxController extends AbstractController
       'org' => $org
     ]);
 
-    $query = 'from(bucket: "'.$bucket.'")
+    $query = 'from(bucket: "' . $bucket . '")
   |> range(start: -5m)
   |> filter(fn: (r) => r["_measurement"] == "Humidité" or r["_measurement"] == "Pression" or r["_measurement"] == "Temperature")
   |> filter(fn: (r) => r["NodeID"] == "042102" or r["NodeID"] == "042103" or r["NodeID"] == "042104" or r["NodeID"] == "042101" or r["NodeID"] == "042105" or r["NodeID"] == "042106" or r["NodeID"] == "042107" or r["NodeID"] == "042108" or r["NodeID"] == "042109" or r["NodeID"] == "042110" or r["NodeID"] == "042202" or r["NodeID"] == "042204" or r["NodeID"] == "042205" or r["NodeID"] == "042206" or r["NodeID"] == "042207" or r["NodeID"] == "042208" or r["NodeID"] == "042209" or r["NodeID"] == "042210" or r["NodeID"] == "042301" or r["NodeID"] == "042302" or r["NodeID"] == "042303" or r["NodeID"] == "042304")
@@ -49,6 +49,7 @@ class ApiInfluxController extends AbstractController
       $measurement = $record_item["_measurement"];
 
       $response[] = [
+        "id" => $record_item['table'],
         "sensor_id" => SENSOR_TYPE[$measurement],
         "type" => $measurement,
         "node_id" => $record_item['NodeID'],
