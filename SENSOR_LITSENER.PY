@@ -44,10 +44,6 @@ SENSOR_ID_PRESS = 116
 SENSOR_ID_TEMP = 112
 SENSOR_ID_HUMY = 114
 
-client = mqtt.Client("client")
-client.username_pw_set(username=MQTT_USERNAME, password=MQTT_PASSWORD)
-client.connect(MQTT_BROKER)
-
 # Type de donnée renvoyée : Random 0 ou 1
 VALMINPRESS = 970
 VALMAXPRESS = 1050
@@ -56,8 +52,12 @@ VALMAXTEMP = 29
 VALMINHUMY = 0
 VALMAXHUMY = 100
 
+client = mqtt.Client("client")
+client.username_pw_set(username=MQTT_USERNAME, password=MQTT_PASSWORD)
+
 
 def task():
+    client.connect(MQTT_BROKER)
     for node in NODE_ID:
         # PREESSURE
         MQTT_TOPIC_PRESS = GROUPNAME + "/" + node + "/" + str(SENSOR_ID_PRESS)
@@ -98,7 +98,7 @@ def task():
 
 
 def executeTask():
-    threading.Timer(900.0, executeTask).start()
+    threading.Timer(300.0, executeTask).start()
     task()
 
 
