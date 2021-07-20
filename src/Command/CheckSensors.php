@@ -96,7 +96,7 @@ class CheckSensors extends Command
                     }
                 }
 
-                if ($sensor["sensor_id"] === 116 && ($sensor["value"] > 1049 || $sensor["value"] < 1011)) {
+                if ($sensor["sensor_id"] === 116 && ($sensor["value"] > 1040 || $sensor["value"] < 1010)) {
                     if(!findIncident(substr($sensor["node_id"], -3),$sensor_type[$sensor["sensor_id"]],$incidents)){
                         echo "Probleme de pression sur la salle " . " " . substr($sensor["node_id"], -3) . "\n";
                         pushNewInciddent($sensor,$sensor_type,$incidents,$conn);
