@@ -27,6 +27,6 @@ protected function configure(): void
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
+        echo "coucou";
     }
 }
