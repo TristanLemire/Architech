@@ -97,9 +97,9 @@ def task():
         print("MQTT Mis à jour - Node %s Timestamp : %s" % (node, int(time.time())))
 
 
-def printit():
-    threading.Timer(5.0, printit).start()
+def executeTask():
+    threading.Timer(900.0, executeTask).start()
     task()
 
 
-printit()
+executeTask()
