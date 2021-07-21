@@ -80,7 +80,6 @@ class ApiInfluxData
       $date = new \DateTime($record_item['_time']);
 
       $response[$record_item['NodeID']][] = [
-        "id" => $record_item['table'],
         "date" => $date->format("Y-m-d H:i:s"),
         "sensor_id" => SENSOR_TYPE[$measurement],
         "type" => $measurement,
