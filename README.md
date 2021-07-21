@@ -5,8 +5,10 @@ Identifier, par un dashboard, les incidents d’un bâtiment scolaire (problème
 d’isolation, de température et d’humidité) et de monitorer ces données en temps
 réel.
 
+
 ## A quel public se destine-t-il ?
 Un établissement scolaire.
+
 
 ## Quelles parties comptez-vous présenter pour le livrable ? Quelles parties seront réalisées et fonctionnelles, quelles parties seront uniquement prototypées, quelles parties ne seront pas traitées ?
 
@@ -22,15 +24,18 @@ graphique
 - affichage des données de l’établissement
 - affichage des données en temps réel de ces capteurs par salle
 
+
 ## Ce qui sera prototypé :
 - une liste des incidents à examiner (en vue d’une réparation)
 - ajouter une date de réparation à un calendrier pour un évènement
+
 
 ## Ce qui ne sera pas traité :
 - ajouter/supprimer des capteurs
 - ajouter/supprimer des salles de classe
 - gestion de paramètres de détection d’incident
 - affichage des états des capteurs
+
 
 ## 💪 Équipe Groupe 8
 
@@ -45,15 +50,19 @@ Pierre-Alain Agnan | `Front-end`
 Selima Ben Kebaier | `Front-end`
 Camille Marquand | `Front-end`
 
+
 ## Disclaimer
 Ce site a été réalisé à des fins pédagogiques dans le cadre du cursus Bachelor de l’école HETIC. Les contenus présentés
 n'ont pas fait l'objet d'une demande de droit d'utilisation. Ce site ne sera en aucun cas exploité à des fins commerciales.
 
+
 ## Lien de la prod
 Lien -> https://architech-hetic.herokuapp.com/api/dashboard/futureEvent/1
 
+
 ## Projet FRONT 
-le projet front -> https://github.com/LimongiVirgil/Architech
+leprojet front -> https://github.com/LimongiVirgil/Architech
+
 
 ## 💻 Installation 💻
 - Clonez le projet
@@ -66,6 +75,7 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 - Lancez l'api avec la commande : `symfony server:start`
 - Vous pouvez maintenant aller sur `http://127.0.0.1:8000/api`
 
+
 ## Lancer le script des capteurs
 - Installer python `brew install python-dev libxml2-dev libxslt-dev`
 - Installer pyenv `brew install pyenv pyenv-virtualenv`
@@ -77,9 +87,11 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 - Installer paho-mqtt `pip install paho-mqtt`
 - Lancer le script `python3 SENSOR_LITSENER.PY`
 
+
 ## Lancer Telegraf
 - Installer telegraf `brew install telegra`
 - Lancer telegraf avec csa config `telegraf --config architech.conf`
+
 
 ## Liste des routes disponibles :
 
@@ -108,11 +120,13 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 `/api/influx` 
 ```
 
+
 ## Custom command symfony pour générer automatiquement des incidents selon les valeurs des capteurs
 Dans notre prod cette commande est lancée automatiquement toutes les 30 minutes grâce à des CRON
 ```shell script
 `./bin/console app:checkSensors` 
 ```
+
 
 ## Liste des capteurs
 NODE | TYPE DE CAPTEUR
@@ -140,6 +154,7 @@ NODE | TYPE DE CAPTEUR
 042301 | 112 (température) , 114 (humidité) , 116 (pression atm)
 042302 | 112 (température) , 114 (humidité) , 116 (pression atm)
 042304 | 112 (température) , 114 (humidité) , 116 (pression atm)
+
 
 
 ## SQL
