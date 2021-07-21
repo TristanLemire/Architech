@@ -63,6 +63,17 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 - Lancez l'api avec la commande : `symfony server:start`
 - Vous pouvez maintenant aller sur `http://127.0.0.1:8000/api`
 
+## Lancer le script des capteurs
+- Installer python `brew install python-dev libxml2-dev libxslt-dev`
+- Installer pyenv `brew install pyenv pyenv-virtualenv`
+- Changer la version de pyenv en 3.9.1 `pyenv install 3.9.1`
+- Initialiser pyenv `pyenv init`
+- Créer votre environnement `pyenv virtualenv 3.9.1 architech`
+- Activer votre environnement `pyenv activate ouihelp-api`
+- Installer threading `pip install threading`
+- Installer paho-mqtt `pip install paho-mqtt`
+- Lancer le script `python3 SENSOR_LITSENER.PY`
+
 ## Liste des routes disponibles :
 
 ### Récupère toutes les prochaines interventions pour un bâtiment donné.
@@ -74,47 +85,6 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 ```shell script
 `/api/dashboard/futureEvent/<BUILDING_ID>` 
 ```
-
-## Basic commands
-
-### Installer les dépendances:
-
-```shell script
-composer install
-```
-
----
-
-### Créer la base de données:
-
-```shell script
-./bin/console doctrine:database:create
-```
-
----
-
-### Exécuter les dernières migrations:
-
-```shell script
-./bin/console doctrine:migration:migrate
-```
-
----
-
-### Lancer le serveur:
-
-```shell script
-symfony server:start
-```
-
-### Stopper le serveur:
-
-```shell script
-make stop
-```
-
----
-
 
 ## SQL
 
