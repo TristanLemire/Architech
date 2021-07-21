@@ -39,41 +39,6 @@ class ApiController extends AbstractController
         return new JsonResponse($response);
     }
 
-    // /**
-    //  * @Route("/api/dashboard/annualEvolution/{id_building}", name="annualEvolution")
-    //  */
-    // public function annualEvolution(int $id_building, IncidentRepository $incidentRepository, JsonMessage $jsonMessage): JsonResponse
-    // {
-    //     $response = array();
-    //     $results = $incidentRepository->annualEvolution($id_building);
-
-    //     if (!$results) {
-    //         return $jsonMessage->getEmptyDataMessage();
-    //     }
-
-
-
-    //     foreach ($results as $result) {
-    //         if (array_key_exists($result->getDate()->format('m') . "-" . $result->getDate()->format('yy'), $response)) {
-    //             array_push($response[$result->getDate()->format('m') . "-" . $result->getDate()->format('yy')], array(
-    //                 'incident_id' => $result->getId(),
-    //                 'incident_title' => $result->getTitle(),
-    //                 'incident_date' => $result->getDate(),
-    //                 'incident_type' => $result->getType(),
-    //                 'incident_status' => $result->getStatus(),
-    //             ));
-    //         } else {
-    //             $response[$result->getDate()->format('m') . "-" . $result->getDate()->format('yy')] = [array(
-    //                 'incident_id' => $result->getId(),
-    //                 'incident_title' => $result->getTitle(),
-    //                 'incident_date' => $result->getDate(),
-    //                 'incident_type' => $result->getType(),
-    //                 'incident_status' => $result->getStatus(),
-    //             )];
-    //         }
-    //     }
-    //     return new JsonResponse($response);
-    // }
 
     /**
      * @Route("/api/dashboard/annualEvolution/{id_building}", name="annualEvolution")

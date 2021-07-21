@@ -14,9 +14,9 @@ class ApiInfluxController extends AbstractController
   /**
    * @Route("/api/influx", name="api_influx")
    */
-  public function index(JsonMessage $jsonMessage): Response
+  public function index(JsonMessage $jsonMessage, ApiInfluxData $apiInfluxData): Response
   {
-    $response = ApiInfluxData::getRequestInfluxData();
+    $response = $apiInfluxData->getRequestInfluxData();
 
     if (!$response || empty($response)) {
       return $jsonMessage->getEmptyDataMessage();
@@ -24,4 +24,19 @@ class ApiInfluxController extends AbstractController
 
     return new JsonResponse($response);
   }
+
+  /**
+   * @Route("/api/influx/graphSensor/{node_id}/{sensor_type}", name="api_influx_sensor_graph_data")
+   */
+  public function graphSensor(string $node_id,string $sensor_type, JsonMessage $jsonMessage,ApiInfluxData $apiInfluxData): Response
+  {
+    $response = $apiInfluxData->getSensorGraph((string)$node_id, $sensor_type);
+
+    if (!$response || empty($response)) {
+      return $jsonMessage->getEmptyDataMessage();
+    }
+
+    return new JsonResponse($response);
+  }
+
 }

@@ -47,8 +47,8 @@ class CheckSensors extends Command
         $stmt = $conn->prepare($sqlQueries);
         $stmt->execute();
         $incidents = $stmt->fetchAll();
-
-        $response_influx_data = ApiInfluxData::getRequestInfluxData();
+        $apiInfluxData = new ApiInfluxData();
+        $response_influx_data = $apiInfluxData->getRequestInfluxData();
 
         function findIncident($classroom_number,$type,$incidents) {
             $haveIncident = false;
