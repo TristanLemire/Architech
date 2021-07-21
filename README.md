@@ -49,6 +49,9 @@ Camille Marquand | `Front-end`
 Ce site a été réalisé à des fins pédagogiques dans le cadre du cursus Bachelor de l’école HETIC. Les contenus présentés
 n'ont pas fait l'objet d'une demande de droit d'utilisation. Ce site ne sera en aucun cas exploité à des fins commerciales.
 
+## Lien de la prod
+lien -> https://architech-hetic.herokuapp.com/api
+
 ## Projet FRONT 
 le projet front -> https://github.com/LimongiVirgil/Architech
 
@@ -74,6 +77,10 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 - Installer paho-mqtt `pip install paho-mqtt`
 - Lancer le script `python3 SENSOR_LITSENER.PY`
 
+## Lancer Telegraf
+- Installer telegraf `brew install telegra`
+- Lancer telegraf avec csa config `telegraf --config architech.conf`
+
 ## Liste des routes disponibles :
 
 ### Récupère toutes les prochaines interventions pour un bâtiment donné.
@@ -83,7 +90,28 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 
 ### Récupère l'évolution annuelle des incidents pour un bâtiment donné.
 ```shell script
-`/api/dashboard/futureEvent/<BUILDING_ID>` 
+`/api/dashboard/annualEvolution/<BUILDING_ID>` 
+```
+
+### Récupère les statisiques du mois des incidents pour un bâtiment donné.
+```shell script
+`/api/dashboard/statsincidents/<BUILDING_ID>` 
+```
+
+### Récupère les infos d'un bâtiment donné.
+```shell script
+`/api/dashboard/infobuilding/<BUILDING_ID>` 
+```
+
+### Récupère les valeurs actuelles des capteurs.
+```shell script
+`/api/influx` 
+```
+
+## Custom command symfony pour générer automatiquement des incidents selon les valeurs des capteurs
+Dans notre prod cette commande est lancée automatiquement toutes les 30 minutes grâce à des CRON
+```shell script
+`./bin/console app:checkSensors` 
 ```
 
 ## SQL
