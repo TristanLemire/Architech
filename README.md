@@ -61,7 +61,7 @@ Lien -> https://architech-hetic.herokuapp.com/api/dashboard/futureEvent/1
 
 
 ## Projet FRONT 
-leprojet front -> https://github.com/LimongiVirgil/Architech
+le projet front -> https://github.com/LimongiVirgil/Architech
 
 
 ## 💻 Installation 💻
