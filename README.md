@@ -42,7 +42,7 @@ graphique
 NOM | ROLE
 --- | ---
 Tristan Lemire | `Back-end`
-Rodrigo Tapie | `Back-end`
+Rodrigo Tapia | `Back-end`
 Emilie Tombouyses | `Front-end`
 Virgil Limongi | `Front-end`
 Thomas Evano | `Front-end`
