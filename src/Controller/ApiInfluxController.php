@@ -20,7 +20,7 @@ class ApiInfluxController extends AbstractController
   /**
    * @Route("/api/influx", name="api_influx")
    */
-  public function index(JsonMessage $jsonMessage): Response
+  public function index(): Response
   {
     $response = ApiInfluxData::getRequestInfluxData();
 
