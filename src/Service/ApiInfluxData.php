@@ -75,10 +75,9 @@ class ApiInfluxData
 
     foreach ($tables->each() as $record) {
       $record_item = $record->values;
-      $measurement = $record_item["_measurement"];
 
-      $new_date = substr($record_item['_start'],0, -2)."Z";
-      $date = new \DateTime($new_date);
+      $measurement = $record_item["_measurement"];
+      $date = new \DateTime($record_item['_time']);
 
       $response[$record_item['NodeID']][] = [
         "id" => $record_item['table'],
