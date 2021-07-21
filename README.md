@@ -50,7 +50,7 @@ Ce site a été réalisé à des fins pédagogiques dans le cadre du cursus Bach
 n'ont pas fait l'objet d'une demande de droit d'utilisation. Ce site ne sera en aucun cas exploité à des fins commerciales.
 
 ## Lien de la prod
-lien -> https://architech-hetic.herokuapp.com/api
+Lien -> https://architech-hetic.herokuapp.com/api/dashboard/futureEvent/1
 
 ## Projet FRONT 
 le projet front -> https://github.com/LimongiVirgil/Architech
@@ -113,6 +113,34 @@ Dans notre prod cette commande est lancée automatiquement toutes les 30 minutes
 ```shell script
 `./bin/console app:checkSensors` 
 ```
+
+## Liste des capteurs
+NODE | TYPE DE CAPTEUR
+--- | ---
+042101 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042102 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042103 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042104 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042105 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042202 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042303 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042204 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042203 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042106 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042107 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042108 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042109 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042110 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042205 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042206 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042207 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042208 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042209 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042210 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042301 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042302 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042304 | 112 (température) , 114 (humidité) , 116 (pression atm)
+
 
 ## SQL
 
