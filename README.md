@@ -120,6 +120,12 @@ leprojet front -> https://github.com/LimongiVirgil/Architech
 `/api/influx` 
 ```
 
+### Récupère les valeurs d'un sensor pour le graph.
+<SENSOR_TYPE> doit etre egale a `Temperature` ou `Pression` ou `Humidité`
+```shell script
+`/api/influx/graphSensor/<NODE_ID>/<SENSOR_TYPE>`
+```
+
 
 ## Custom command symfony pour générer automatiquement des incidents selon les valeurs des capteurs
 Dans notre prod cette commande est lancée automatiquement toutes les 30 minutes grâce à des CRON
