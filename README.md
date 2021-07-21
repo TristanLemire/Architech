@@ -123,7 +123,7 @@ leprojet front -> https://github.com/LimongiVirgil/Architech
 ### Récupère les valeurs d'un sensor pour le graph.
 <SENSOR_TYPE> doit etre egale a 'Temperature' ou 'Pression' ou 'Humidité'
 ```shell script
-`/api/influx/graphSensor/<NODE_ID>/<SENSOR_TYPE>` -> 
+`/api/influx/graphSensor/<NODE_ID>/<SENSOR_TYPE>`
 ```
 
 
