@@ -19,6 +19,16 @@ class CompanyRepository extends ServiceEntityRepository
         parent::__construct($registry, Company::class);
     }
 
+    public function getCompany(int $id_building): array
+    {
+        $qb = $this->createQueryBuilder('i');
+        $qb->select('i')
+            ->where('i.status = "in_progress');
+
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Company[] Returns an array of Company objects
     //  */

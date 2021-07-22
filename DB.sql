@@ -123,7 +123,6 @@ INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (22,9,
 INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (23,8,'incident salle A203', '2020-6-7 16:07:56','high_humidity', 'assign');
 
 INSERT INTO company (id,name,mail,phone,type) VALUES (1,'humidity Controller','contact@humidityController.com','0112345678','high_humidity');
-INSERT INTO company (id,name,mail,phone,type) VALUES (2,'huminity','contact@huminity.fr', '0187654321','high_humidity');
 INSERT INTO company (id,name,mail,phone,type) VALUES (3,'Solar','contact@solar.com','0134567890','heat_leak');
 INSERT INTO company (id,name,mail,phone,type) VALUES (4,'Breath of the wild,','contact@breathofthewild','0134567890','defective_air_conditioning');
 

@@ -61,6 +61,16 @@ class IncidentRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function agenda(int $id_building): array
+    {
+        $qb = $this->createQueryBuilder('i');
+        $qb->select('i')
+            ->where('i.status = "in_progress');
+
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Incident[] Returns an array of Incident objects
     //  */

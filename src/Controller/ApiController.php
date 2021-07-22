@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Company;
 use App\Repository\IncidentRepository;
 use App\Repository\BuildingRepository;
 use App\Repository\InterventionRepository;
@@ -138,6 +139,37 @@ class ApiController extends AbstractController
             ];
         }
 
+        return new JsonResponse($response);
+    }
+
+    /**
+     * @Route("/api/dashboard/agenda/{id_building}", name="agenda")
+     */
+    public function agenda(int $id_building, IncidentRepository $incidentRepository, Company $company,JsonMessage $jsonMessage): JsonResponse
+    {
+        $response = array();
+        $resultsAgenda = $incidentRepository->agenda($id_building);
+
+        if (!$resultsAgenda) {
+            return $jsonMessage->getEmptyDataMessage();
+        }
+
+        $resultsCompany = $company->getCompany($id_building);
+
+        if (!$resultsCompany) {
+            return $jsonMessage->getEmptyDataMessage();
+        }
+
+
+        foreach ($results as $result) {
+            $response[] = array(
+                'incident_id' => $result->getId(),
+                'incident_title' => $result->getTitle(),
+                'incident_date' => $result->getDate(),
+                'incident_type' => $result->getType(),
+                'incident_status' => $result->getStatus(),
+            );
+        }
         return new JsonResponse($response);
     }
 }
