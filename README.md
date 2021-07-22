@@ -89,7 +89,7 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 
 
 ## Lancer Telegraf
-- Installer telegraf `brew install telegra`
+- Installer telegraf `brew install telegraf`
 - Lancer telegraf avec csa config `telegraf --config architech.conf`
 
 
