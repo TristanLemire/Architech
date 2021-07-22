@@ -143,7 +143,7 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Route("/api/dashboard/agenda/{id_building}", name="agenda")
+     * @Route("/api/agenda/{id_building}", name="agenda")
      */
     public function agenda(int $id_building, IncidentRepository $incidentRepository, CompanyRepository $company,JsonMessage $jsonMessage): JsonResponse
     {
