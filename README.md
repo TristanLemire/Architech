@@ -126,6 +126,11 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 `/api/influx/graphSensor/<NODE_ID>/<SENSOR_TYPE>`
 ```
 
+### Récupère l'agenda
+```shell script
+`/api/dashboard/agenda/<BUILDING_ID>`
+```
+
 
 ## Custom command symfony pour générer automatiquement des incidents selon les valeurs des capteurs
 Dans notre prod cette commande est lancée automatiquement toutes les 30 minutes grâce à des CRON
