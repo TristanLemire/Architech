@@ -99,7 +99,7 @@ def task():
 
 
 def executeTask():
-    threading.Timer(1800.0, executeTask).start()
+    threading.Timer(300.0, executeTask).start()
     task()
 
 

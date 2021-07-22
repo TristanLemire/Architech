@@ -23,10 +23,11 @@ class InterventionRepository extends ServiceEntityRepository
     public function futurEvent(int $id_building): array
     {
         $qb = $this->createQueryBuilder('i');
-        $qb->select('a.id, a.type, i.datetime, i.company, c.name, c.floor, c.zone, a.status')
+        $qb->select('a.id, a.type, i.datetime, e.name as company, c.name, c.floor, c.zone, a.status')
             ->innerJoin('App\Entity\Incident', 'a',   Expr\Join::WITH,  'a.id = i.incident')
             ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'a.classroom = c.id')
             ->innerJoin('App\Entity\Building', 'b',   Expr\Join::WITH,  'c.building = b.id')
+            ->innerJoin('App\Entity\Company', 'e',   Expr\Join::WITH,  'i.company = e.id')
             ->where('a.status = :assign')
             ->setParameter('assign', 'assign')
             ->andWhere('b.id = :id_building')

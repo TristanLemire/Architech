@@ -23,24 +23,15 @@ class Intervention
     private $datetime;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $company;
-
-    /**
      * @ORM\OneToOne(targetEntity="Incident", cascade={"persist", "remove"})
      */
     private $incident;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="interventions")
      */
-    private $mail;
+    private $company;
 
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $phone;
 
     public function getId(): ?int
     {
@@ -59,18 +50,6 @@ class Intervention
         return $this;
     }
 
-    public function getCompany(): ?string
-    {
-        return $this->company;
-    }
-
-    public function setCompany(string $company): self
-    {
-        $this->company = $company;
-
-        return $this;
-    }
-
     public function getIncident(): ?incident
     {
         return $this->incident;
@@ -83,26 +62,14 @@ class Intervention
         return $this;
     }
 
-    public function getMail(): ?string
+    public function getCompany(): ?company
     {
-        return $this->mail;
+        return $this->company;
     }
 
-    public function setMail(?string $mail): self
+    public function setCompany(?company $company): self
     {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
+        $this->company = $company;
 
         return $this;
     }
