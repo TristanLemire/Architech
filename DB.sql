@@ -1,7 +1,7 @@
 USE architech;
 
-INSERT INTO building (id, name, phone, city, zipcode, address, mail) VALUES (1 ,'HETIC', '0176361007', 'Montreuil', '93100', '27 bis rue du Progrès', 'hetic@hetic.net');
-INSERT INTO manager (id, last_name, first_name, phone, gender, mail) VALUES (1 , 'Sitterlé', 'Frédéric', '0671215007', 'male','f.sitterle@hetic.fr');
+INSERT INTO building (id, name, phone, city, zipcode, address, mail) VALUES (1 ,'ESGCI', '4093283728', 'Paris', '75011', '25 Rue Saint-Ambroise', 'contact@esgci.net');
+INSERT INTO manager (id, last_name, first_name, phone, gender, mail) VALUES (1 , 'Lemaire', 'Aude', '0693281727', 'female','aude.lemaire@esgci.net');
 UPDATE building set manager_id = 1 where id = 1;
 
 INSERT INTO classroom (id, name, floor, zone, building_id) VALUES (1 , '101', 1, 'A', 1);
