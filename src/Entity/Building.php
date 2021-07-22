@@ -59,9 +59,15 @@ class Building
      */
     private $mail;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Company::class, mappedBy="building")
+     */
+    private $companies;
+
     public function __construct()
     {
         $this->classrooms = new ArrayCollection();
+        $this->companies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -179,6 +185,36 @@ class Building
     public function setMail(string $mail): self
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Company[]
+     */
+    public function getCompanies(): Collection
+    {
+        return $this->companies;
+    }
+
+    public function addCompany(Company $company): self
+    {
+        if (!$this->companies->contains($company)) {
+            $this->companies[] = $company;
+            $company->setBuilding($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompany(Company $company): self
+    {
+        if ($this->companies->removeElement($company)) {
+            // set the owning side to null (unless already changed)
+            if ($company->getBuilding() === $this) {
+                $company->setBuilding(null);
+            }
+        }
 
         return $this;
     }

@@ -44,6 +44,11 @@ class Company
      */
     private $interventions;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=building::class, inversedBy="companies")
+     */
+    private $building;
+
     public function __construct()
     {
         $this->interventions = new ArrayCollection();
@@ -128,6 +133,18 @@ class Company
                 $intervention->setCompany(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBuilding(): ?building
+    {
+        return $this->building;
+    }
+
+    public function setBuilding(?building $building): self
+    {
+        $this->building = $building;
 
         return $this;
     }
