@@ -82,10 +82,10 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 - Changer la version de pyenv en 3.9.1 `pyenv install 3.9.1`
 - Initialiser pyenv `pyenv init`
 - Créer votre environnement `pyenv virtualenv 3.9.1 architech`
-- Activer votre environnement `pyenv activate ouihelp-api`
+- Activer votre environnement `pyenv activate architech`
 - Installer threading `pip install threading`
 - Installer paho-mqtt `pip install paho-mqtt`
-- Lancer le script `python3 SENSOR_LITSENER.PY`
+- Lancer le script `python SENSOR_LITSENER.PY`
 
 
 ## Lancer Telegraf
