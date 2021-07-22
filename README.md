@@ -128,7 +128,7 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 
 ### Récupère l'agenda
 ```shell script
-`/api/dashboard/agenda/<BUILDING_ID>`
+`/api/agenda/<BUILDING_ID>`
 ```
 
 
