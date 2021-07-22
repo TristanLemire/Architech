@@ -45,7 +45,7 @@ class Company
     private $interventions;
 
     /**
-     * @ORM\ManyToOne(targetEntity=building::class, inversedBy="companies")
+     * @ORM\ManyToOne(targetEntity=Building::class, inversedBy="companies")
      */
     private $building;
 

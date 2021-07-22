@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Company;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr;
 
 /**
  * @method Company|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,9 +22,11 @@ class CompanyRepository extends ServiceEntityRepository
 
     public function getCompany(int $id_building): array
     {
-        $qb = $this->createQueryBuilder('i');
-        $qb->select('i')
-            ->where('i.status = "in_progress');
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('c')
+            ->innerJoin('App\Entity\Building', 'b',   Expr\Join::WITH,  'c.building = b.id')
+            ->Where('b.id = :id_building')
+            ->setParameter('id_building', $id_building);
 
         $query = $qb->getQuery();
         return $query->getResult();

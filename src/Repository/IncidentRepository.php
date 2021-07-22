@@ -65,7 +65,12 @@ class IncidentRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('i');
         $qb->select('i')
-            ->where('i.status = "in_progress');
+            ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
+            ->innerJoin('App\Entity\Building', 'b',   Expr\Join::WITH,  'c.building = b.id')
+            ->where('i.status = :status')
+            ->setParameter('status', "in_progress")
+            ->andWhere('b.id = :id_building')
+            ->setParameter('id_building', $id_building);
 
         $query = $qb->getQuery();
         return $query->getResult();
