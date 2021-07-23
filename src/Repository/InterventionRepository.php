@@ -23,8 +23,8 @@ class InterventionRepository extends ServiceEntityRepository
     public function futurEvent(int $id_building): array
     {
         $qb = $this->createQueryBuilder('i');
-        $qb->select('a.id, a.type, i.datetime, e.name as company, c.name, c.floor, c.zone, a.status')
-            ->innerJoin('App\Entity\Incident', 'a',   Expr\Join::WITH,  'a.id = i.incident')
+        $qb->select('i.id AS id_intervention, a.id, a.type, i.datetime, e.name as company, c.name, c.floor, c.zone, a.status, i.comment')
+            ->innerJoin('App\Entity\Incident', 'a',   Expr\Join::WITH,  'a.intervention = i.id')
             ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'a.classroom = c.id')
             ->innerJoin('App\Entity\Building', 'b',   Expr\Join::WITH,  'c.building = b.id')
             ->innerJoin('App\Entity\Company', 'e',   Expr\Join::WITH,  'i.company = e.id')
@@ -32,8 +32,8 @@ class InterventionRepository extends ServiceEntityRepository
             ->setParameter('assign', 'assign')
             ->andWhere('b.id = :id_building')
             ->setParameter('id_building', $id_building)
-            ->andWhere('MONTH(i.datetime) = MONTH(CURRENT_DATE())')
-            ->andWhere('YEAR(i.datetime) = YEAR(CURRENT_DATE())')
+//            ->andWhere('MONTH(i.datetime) = MONTH(CURRENT_DATE())')
+//            ->andWhere('YEAR(i.datetime) = YEAR(CURRENT_DATE())')
             ->orderBy('i.datetime');;
 
         $query = $qb->getQuery();

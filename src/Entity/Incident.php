@@ -42,6 +42,11 @@ class Incident
      */
     private $classroom;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Intervention", inversedBy="incidents")
+     */
+    private $intervention;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Incident
     public function setClassroom(?classroom $classroom): self
     {
         $this->classroom = $classroom;
+
+        return $this;
+    }
+
+    public function getIntervention(): ?intervention
+    {
+        return $this->intervention;
+    }
+
+    public function setIntervention(?intervention $intervention): self
+    {
+        $this->intervention = $intervention;
 
         return $this;
     }

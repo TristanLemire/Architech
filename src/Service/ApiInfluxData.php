@@ -44,6 +44,7 @@ class ApiInfluxData
 
     foreach ($tables->each() as $record) {
       $record_item = $record->values;
+
       $measurement = $record_item["_measurement"];
 
       $response[$record_item['NodeID']][] = [

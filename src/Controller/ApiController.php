@@ -26,16 +26,24 @@ class ApiController extends AbstractController
         }
 
         foreach ($results as $result) {
-            $response[] = array(
-                'incident_id' => $result["id"],
-                'incident_type' => $result["type"],
-                'incident_status' => $result["status"],
-                'intervention_datetime' => $result["datetime"],
+
+          //TODO: gerer le cas id_tervention = null
+            $incidents[$result['id_intervention']][] = [
+              'incident_id' => $result["id"],
+              'incident_type' => $result["type"],
+              'incident_status' => $result["status"],
+              'classroom_name' => $result["name"],
+              'classroom_floor' => $result["floor"],
+              'classroom_zone' => $result["zone"],
+            ];
+
+            $response[$result['id_intervention']] = [
+                'intervention_datetime' => $result["datetime"]->format("Y-m-d H:i:s"),
                 'intervention_company' => $result["company"],
-                'classroom_name' => $result["name"],
-                'classroom_floor' => $result["floor"],
-                'classroom_zone' => $result["zone"],
-            );
+                'intervention_type' => $result["type"],
+                'intervention_comment' => $result["comment"],
+                'incidents' => $incidents[$result['id_intervention']],
+            ];
         }
         return new JsonResponse($response);
     }
@@ -52,7 +60,6 @@ class ApiController extends AbstractController
         if (!$results) {
             return $jsonMessage->getEmptyDataMessage();
         }
-
 
 
         foreach ($results as $result) {
