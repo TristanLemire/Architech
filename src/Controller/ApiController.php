@@ -27,14 +27,14 @@ class ApiController extends AbstractController
 
         foreach ($results as $result) {
 
-          //TODO: gerer le cas id_tervention = null
+            //TODO: gerer le cas id_tervention = null
             $incidents[$result['id_intervention']][] = [
-              'incident_id' => $result["id"],
-              'incident_type' => $result["type"],
-              'incident_status' => $result["status"],
-              'classroom_name' => $result["name"],
-              'classroom_floor' => $result["floor"],
-              'classroom_zone' => $result["zone"],
+                'incident_id' => $result["id"],
+                'incident_type' => $result["type"],
+                'incident_status' => $result["status"],
+                'classroom_name' => $result["name"],
+                'classroom_floor' => $result["floor"],
+                'classroom_zone' => $result["zone"],
             ];
 
             $response[$result['id_intervention']] = [
@@ -46,6 +46,45 @@ class ApiController extends AbstractController
             ];
         }
         return new JsonResponse($response);
+    }
+
+    /**
+     * @Route("/api/dashboard/allFutureEvent/{id_building}", name="allFutureEvent")
+     */
+    public function allFutureEvent(int $id_building, InterventionRepository $interventionRepository, JsonMessage $jsonMessage): JsonResponse
+    {
+        $allResponse = array();
+        $results = $interventionRepository->allFuturEvent($id_building);
+
+        if (!$results) {
+            return $jsonMessage->getEmptyDataMessage();
+        }
+        foreach ($results as $result) {
+            $response = array();
+
+            $incidents[$result['id_intervention']][] = [
+                'incident_id' => $result["id"],
+                'incident_type' => $result["type"],
+                'incident_status' => $result["status"],
+                'classroom_name' => $result["name"],
+                'classroom_floor' => $result["floor"],
+                'classroom_zone' => $result["zone"],
+            ];
+
+            $response[$result['id_intervention']] = [
+                'intervention_datetime' => $result["datetime"]->format("Y-m-d H:i:s"),
+                'intervention_company' => $result["company"],
+                'intervention_type' => $result["type"],
+                'intervention_comment' => $result["comment"],
+                'incidents' => $incidents[$result['id_intervention']],
+            ];
+            if (array_key_exists($result["datetime"]->format('m') . "-" . $result["datetime"]->format('yy'), $response)) {
+                array_push($allResponse[$result["datetime"]->format('m') . "-" . $result["datetime"]->format('yy')], $response);
+            } else {
+                $allResponse[$result["datetime"]->format('m') . "-" . $result["datetime"]->format('yy')] = [$response];
+            }
+        }
+        return new JsonResponse($allResponse);
     }
 
 
@@ -152,7 +191,7 @@ class ApiController extends AbstractController
     /**
      * @Route("/api/agenda/{id_building}", name="agenda")
      */
-    public function agenda(int $id_building, IncidentRepository $incidentRepository, CompanyRepository $company,JsonMessage $jsonMessage): JsonResponse
+    public function agenda(int $id_building, IncidentRepository $incidentRepository, CompanyRepository $company, JsonMessage $jsonMessage): JsonResponse
     {
         $resultsAgenda = $incidentRepository->agenda($id_building);
 
@@ -166,7 +205,7 @@ class ApiController extends AbstractController
             return $jsonMessage->getEmptyDataMessage();
         }
 
-        foreach ($resultsAgenda as $resultAgenda){
+        foreach ($resultsAgenda as $resultAgenda) {
             switch ($resultAgenda->getType()) {
                 case 'high_humidity':
                     $high_humidity_incidents[] =  [
@@ -200,7 +239,7 @@ class ApiController extends AbstractController
             }
         }
 
-        foreach ($resultsCompany as $resultCompany){
+        foreach ($resultsCompany as $resultCompany) {
             switch ($resultCompany->getType()) {
                 case 'high_humidity':
                     $high_humidity_company = [

@@ -27,6 +27,7 @@ INSERT INTO classroom (id, name, floor, zone, building_id) VALUES (20 , '210', 2
 INSERT INTO classroom (id, name, floor, zone, building_id) VALUES (21, '301', 3, 'B', 1);
 INSERT INTO classroom (id, name, floor, zone, building_id) VALUES (22 , '302', 3, 'B', 1);
 INSERT INTO classroom (id, name, floor, zone, building_id) VALUES (23 , '304', 3, 'B', 1);
+INSERT INTO classroom (id, name, floor, zone, building_id) VALUES (24 , '211', 2, 'A', 1);
 
 INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (1,1,'temprature','042101','112');
 INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (2,1,'Humidity','042101','114');
@@ -97,6 +98,9 @@ INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (66,22,'P
 INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (67,23,'temprature','042304','112');
 INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (68,23,'Humidity','042304','114');
 INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (69,23,'Preessure','042304','116');
+INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (70,23,'temprature','042211','112');
+INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (71,23,'Humidity','042211','114');
+INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (72,23,'Preessure','042211','116');
 
 INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (1,1,'humidity Controller','contact@humidityController.com','0112345678','high_humidity');
 INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (2,1,'Solar','contact@solar.com','0134567890','heat_leak');
@@ -121,6 +125,7 @@ INSERT INTO intervention (id,datetime,company_id) VALUES (16,'2020-12-30 09:00:0
 INSERT INTO intervention (id,datetime,company_id,comment) VALUES (17,'2020-8-15 10:00:00',2,'intervention sur dans salle B109 et A204 ');
 INSERT INTO intervention (id,datetime,company_id) VALUES (18,'2020-10-27 14:00:00',1);
 INSERT INTO intervention (id,datetime,company_id,comment) VALUES (19, '2020-11-15 10:00:00',2,'intervention sur dans salle A203');
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (20, '2020-11-15 10:00:00',2,'intervention sur dans salle A211');
 
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (1,1,'incident salle A101', '2021-7-4 14:13:54','high_humidity', 'assign',1);
 INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (2,5,'incident salle A105', '2021-1-14 12:45:26','defective_air_conditioning', 'in_progress');
@@ -144,10 +149,6 @@ INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (20,12,'incident salle B108', '2020-9-4 13:04:56','high_humidity', 'assign',18);
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (21,11,'incident salle B107', '2020-11-3 12:02:56','defective_air_conditioning', 'assign',16);
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (22,9,'incident salle A204', '2020-7-4 13:03:56','heat_leak', 'assign',17);
-INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id  ) VALUES (23,8,'incident salle A203', '2020-9-5 12:04:56','high_humidity', 'assign',18);
-INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id  ) VALUES (24,8,'incident salle A203', '2020-10-5 12:04:56','heat_leak', 'assign',19);
-
-
-
-
-
+INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (23,8,'incident salle A203', '2020-9-5 12:04:56','high_humidity', 'assign',18);
+INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (24,8,'incident salle A203', '2020-10-5 12:04:56','heat_leak', 'assign',19);
+INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (25,24,'incident salle A211', '2020-10-5 12:04:56','heat_leak', 'assign',20);
