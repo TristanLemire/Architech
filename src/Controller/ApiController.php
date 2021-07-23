@@ -49,7 +49,7 @@ class ApiController extends AbstractController
     }
 
     /**
-     * @Route("/api/dashboard/allFutureEvent/{id_building}", name="allFutureEvent")
+     * @Route("/api/agenda/allFutureEvent/{id_building}", name="allFutureEvent")
      */
     public function allFutureEvent(int $id_building, InterventionRepository $interventionRepository, JsonMessage $jsonMessage): JsonResponse
     {
