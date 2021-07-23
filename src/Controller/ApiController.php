@@ -53,14 +53,15 @@ class ApiController extends AbstractController
      */
     public function allFutureEvent(int $id_building, InterventionRepository $interventionRepository, JsonMessage $jsonMessage): JsonResponse
     {
-        $allResponse = array();
+        $response = array();
         $results = $interventionRepository->allFuturEvent($id_building);
 
         if (!$results) {
             return $jsonMessage->getEmptyDataMessage();
         }
+
+        $interventions = [];
         foreach ($results as $result) {
-            $response = array();
 
             $incidents[$result['id_intervention']][] = [
                 'incident_id' => $result["id"],
@@ -71,20 +72,27 @@ class ApiController extends AbstractController
                 'classroom_zone' => $result["zone"],
             ];
 
-            $response[$result['id_intervention']] = [
-                'intervention_datetime' => $result["datetime"]->format("Y-m-d H:i:s"),
+            $interventions[$result['id_intervention']] = [
+                'intervention_id' => $result["id_intervention"],
+                'intervention_datetime' => $result["datetime"],
                 'intervention_company' => $result["company"],
                 'intervention_type' => $result["type"],
                 'intervention_comment' => $result["comment"],
                 'incidents' => $incidents[$result['id_intervention']],
             ];
-            if (array_key_exists($result["datetime"]->format('m') . "-" . $result["datetime"]->format('Y'), $response)) {
-                array_push($allResponse[$result["datetime"]->format('m') . "-" . $result["datetime"]->format('Y')], $response);
+        }
+
+        foreach ($interventions as $intervention) {
+
+            if (array_key_exists($intervention["intervention_datetime"]->format('m') . "-" . $intervention["intervention_datetime"]->format('Y'), $response)) {
+                array_push($response[$intervention["intervention_datetime"]->format('m') . "-" . $intervention["intervention_datetime"]->format('Y')], $intervention);
             } else {
-                $allResponse[$result["datetime"]->format('m') . "-" . $result["datetime"]->format('Y')] = [$response];
+                $response[$intervention["intervention_datetime"]->format('m') . "-" . $intervention["intervention_datetime"]->format('Y')] = [$intervention];
             }
         }
-        return new JsonResponse($allResponse);
+
+
+        return new JsonResponse($response);
     }
 
 
