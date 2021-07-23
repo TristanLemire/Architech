@@ -78,10 +78,10 @@ class ApiController extends AbstractController
                 'intervention_comment' => $result["comment"],
                 'incidents' => $incidents[$result['id_intervention']],
             ];
-            if (array_key_exists($result["datetime"]->format('m') . "-" . $result["datetime"]->format('yy'), $response)) {
-                array_push($allResponse[$result["datetime"]->format('m') . "-" . $result["datetime"]->format('yy')], $response);
+            if (array_key_exists($result["datetime"]->format('m') . "-" . $result["datetime"]->format('Y'), $response)) {
+                array_push($allResponse[$result["datetime"]->format('m') . "-" . $result["datetime"]->format('Y')], $response);
             } else {
-                $allResponse[$result["datetime"]->format('m') . "-" . $result["datetime"]->format('yy')] = [$response];
+                $allResponse[$result["datetime"]->format('m') . "-" . $result["datetime"]->format('Y')] = [$response];
             }
         }
         return new JsonResponse($allResponse);
