@@ -24,7 +24,7 @@ class IncidentRepository extends ServiceEntityRepository
     {
         $where_query = ($current_date) ? 'MONTH(i.date) = MONTH(CURRENT_DATE())' : 'MONTH(i.date) = MONTH(CURRENT_DATE()) - 1';
         $results = $this->createQueryBuilder('i')
-          ->select('
+            ->select('
                 i.id,
                 i.title,
                 i.type,
@@ -34,13 +34,13 @@ class IncidentRepository extends ServiceEntityRepository
                 c.floor,
                 c.zone
                 ')
-          ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
-          ->innerJoin('App\Entity\Building', 'b',   Expr\Join::WITH,  'c.building = b.id')
-          ->where($where_query)
-          ->andWhere('b.id = :id_building')
-          ->setParameter('id_building', $id_building)
-          ->getQuery()
-          ->getResult();
+            ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
+            ->innerJoin('App\Entity\Building', 'b',   Expr\Join::WITH,  'c.building = b.id')
+            ->where($where_query)
+            ->andWhere('b.id = :id_building')
+            ->setParameter('id_building', $id_building)
+            ->getQuery()
+            ->getResult();
 
         return $results;
     }
@@ -64,7 +64,7 @@ class IncidentRepository extends ServiceEntityRepository
     public function agenda(int $id_building): array
     {
         $qb = $this->createQueryBuilder('i');
-        $qb->select('i')
+        $qb->select('i.id,i.title,i.date,i.type,i.status,c.id as classroom_id,c.name,c.floor,c.zone')
             ->innerJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'i.classroom = c.id')
             ->innerJoin('App\Entity\Building', 'b',   Expr\Join::WITH,  'c.building = b.id')
             ->where('i.status = :status')

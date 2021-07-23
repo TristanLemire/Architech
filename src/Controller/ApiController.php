@@ -216,13 +216,17 @@ class ApiController extends AbstractController
         foreach ($resultsCompany as $resultCompany) {
             $incidents = [];
             foreach ($resultsAgenda as $resultAgenda) {
-                if ($resultCompany->getType() == $resultAgenda->getType()) {
+                if ($resultCompany->getType() == $resultAgenda["type"]) {
                     $incidents[] = [
-                        'incident_id' => $resultAgenda->getId(),
-                        'incident_title' => $resultAgenda->getTitle(),
-                        'incident_date' => $resultAgenda->getDate()->format('Y-m-d H:i:s'),
-                        'incident_type' => $resultAgenda->getType(),
-                        'incident_status' => $resultAgenda->getStatus(),
+                        'incident_id' => $resultAgenda["id"],
+                        'incident_title' => $resultAgenda["title"],
+                        'incident_date' => $resultAgenda["date"]->format('Y-m-d H:i:s'),
+                        'incident_type' => $resultAgenda["type"],
+                        'incident_status' => $resultAgenda["status"],
+                        'classroom_id' => $resultAgenda["classroom_id"],
+                        'classroom_name' => $resultAgenda["name"],
+                        'classroom_floor' => $resultAgenda["floor"],
+                        'classroom_zone' => $resultAgenda["zone"],
                     ];
                 }
             }
