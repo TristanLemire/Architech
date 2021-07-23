@@ -230,7 +230,7 @@ class ApiController extends AbstractController
                     ];
                 }
             }
-            $response[$resultCompany->getType()][] = [
+            $response[$resultCompany->getType()] = [
                 'incidents' => $incidents,
                 'company' => [
                     'id' => $resultCompany->getId(),
