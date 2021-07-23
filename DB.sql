@@ -98,6 +98,30 @@ INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (67,23,'t
 INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (68,23,'Humidity','042304','114');
 INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (69,23,'Preessure','042304','116');
 
+INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (1,1,'humidity Controller','contact@humidityController.com','0112345678','high_humidity');
+INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (2,1,'Solar','contact@solar.com','0134567890','heat_leak');
+INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (3,1,'Breath of the wild,','contact@breathofthewild','0134567890','defective_air_conditioning');
+
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (1,'2021-8-16 14:00:00',1,'intervention sur dans salle A101 ');
+INSERT INTO intervention (id,datetime,company_id) VALUES (2,'2021-7-8 10:00:00',2);
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (3,'2021-5-18 09:00:00',3,'intervention sur dans salle A210 ');
+INSERT INTO intervention (id,datetime,company_id) VALUES (4,'2021-7-8 16:00:00',2);
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (5,'2021-2-16 15:00:00',1,'intervention sur dans salle A102 ');
+INSERT INTO intervention (id,datetime,company_id) VALUES (6,'2021-7-16 17:00:00',2);
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (7,'2021-5-18 10:00:00',3,'intervention sur dans salle A202 ');
+INSERT INTO intervention (id,datetime,company_id) VALUES (8,'2021-3-17 11:30:00',2);
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (9,'2021-7-4 14:00:00',1,'intervention sur dans salle B304 ');
+INSERT INTO intervention (id,datetime,company_id) VALUES (10,'2021-9-10 09:00:00',3);
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (11,'2021-10-6 10:00:00',2,'intervention sur dans salle B301 ');
+INSERT INTO intervention (id,datetime,company_id) VALUES (12, 14, '2021-11-27 14:00:00',1);
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (13, 15, '2021-12-30 09:00:00',3,'intervention sur dans salle A208 ');
+INSERT INTO intervention (id,datetime,company_id) VALUES (14, 16, '2021-1-15 10:00:00',2);
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (15, 17, '2021-1-27 14:00:00',1,'intervention sur dans salle A206 ');
+INSERT INTO intervention (id,datetime,company_id) VALUES (16, 18, '2020-12-30 09:00:00',3);
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (17, 19, '2020-8-15 10:00:00',2,'intervention sur dans salle B109 et A204 ');
+INSERT INTO intervention (id,datetime,company_id) VALUES (18, 20, '2020-10-27 14:00:00',1);
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (17, 19, '2020-11-15 10:00:00',2,'intervention sur dans salle A203');
+
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (1,1,'incident salle A101', '2021-7-4 14:13:54','high_humidity', 'assign',1);
 INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (2,5,'incident salle A105', '2021-1-14 12:45:26','defective_air_conditioning', 'in_progress');
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (3,10,'incident salle B106', '2021-7-7 08:05:06','heat_leak', 'finish',2);
@@ -123,29 +147,6 @@ INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id  ) VALUES (23,8,'incident salle A203', '2020-9-5 12:04:56','high_humidity', 'assign',18);
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id  ) VALUES (24,8,'incident salle A203', '2020-10-5 12:04:56','heat_leak', 'assign',19);
 
-INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (1,1,'humidity Controller','contact@humidityController.com','0112345678','high_humidity');
-INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (2,1,'Solar','contact@solar.com','0134567890','heat_leak');
-INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (3,1,'Breath of the wild,','contact@breathofthewild','0134567890','defective_air_conditioning');
-
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (1,'2021-8-16 14:00:00',1,'intervention sur dans salle A101 ');
-INSERT INTO intervention (id,datetime,company_id) VALUES (2,'2021-7-8 10:00:00',2);
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (3,'2021-5-18 09:00:00',3,'intervention sur dans salle A210 ');
-INSERT INTO intervention (id,datetime,company_id) VALUES (4,'2021-7-8 16:00:00',2);
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (5,'2021-2-16 15:00:00',1,'intervention sur dans salle A102 ');
-INSERT INTO intervention (id,datetime,company_id) VALUES (6,'2021-7-16 17:00:00',2);
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (7,'2021-5-18 10:00:00',3,'intervention sur dans salle A202 ');
-INSERT INTO intervention (id,datetime,company_id) VALUES (8,'2021-3-17 11:30:00',2);
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (9,'2021-7-4 14:00:00',1,'intervention sur dans salle B304 ');
-INSERT INTO intervention (id,datetime,company_id) VALUES (10,'2021-9-10 09:00:00',3);
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (11,'2021-10-6 10:00:00',2,'intervention sur dans salle B301 ');
-INSERT INTO intervention (id,datetime,company_id) VALUES (12, 14, '2021-11-27 14:00:00',1);
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (13, 15, '2021-12-30 09:00:00',3,'intervention sur dans salle A208 ');
-INSERT INTO intervention (id,datetime,company_id) VALUES (14, 16, '2021-1-15 10:00:00',2);
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (15, 17, '2021-1-27 14:00:00',1,'intervention sur dans salle A206 ');
-INSERT INTO intervention (id,datetime,company_id) VALUES (16, 18, '2020-12-30 09:00:00',3);
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (17, 19, '2020-8-15 10:00:00',2,'intervention sur dans salle B109 et A204 ');
-INSERT INTO intervention (id,datetime,company_id) VALUES (18, 20, '2020-10-27 14:00:00',1);
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (17, 19, '2020-11-15 10:00:00',2,'intervention sur dans salle A203');
 
 
 
