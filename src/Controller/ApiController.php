@@ -205,88 +205,30 @@ class ApiController extends AbstractController
             return $jsonMessage->getEmptyDataMessage();
         }
 
-        foreach ($resultsAgenda as $resultAgenda) {
-            switch ($resultAgenda->getType()) {
-                case 'high_humidity':
-                    $high_humidity_incidents[] =  [
-                        'incident_id' => $resultAgenda->getId(),
-                        'incident_title' => $resultAgenda->getTitle(),
-                        'incident_date' => $resultAgenda->getDate()->format('Y-m-d H:i:s'),
-                        'incident_type' => $resultAgenda->getType(),
-                        'incident_status' => $resultAgenda->getStatus(),
-                    ];
-                    break;
-                case 'defective_air_conditioning':
-                    $defective_air_conditioning_incidents[] = [
-                        'incident_id' => $resultAgenda->getId(),
-                        'incident_title' => $resultAgenda->getTitle(),
-                        'incident_date' => $resultAgenda->getDate()->format('Y-m-d H:i:s'),
-                        'incident_type' => $resultAgenda->getType(),
-                        'incident_status' => $resultAgenda->getStatus(),
-                    ];
-                    break;
-                case 'heat_leak':
-                    $heat_leak_incidents[] =  [
-                        'incident_id' => $resultAgenda->getId(),
-                        'incident_title' => $resultAgenda->getTitle(),
-                        'incident_date' => $resultAgenda->getDate()->format('Y-m-d H:i:s'),
-                        'incident_type' => $resultAgenda->getType(),
-                        'incident_status' => $resultAgenda->getStatus(),
-                    ];
-                    break;
-                default:
-                    break;
-            }
-        }
-
         foreach ($resultsCompany as $resultCompany) {
-            switch ($resultCompany->getType()) {
-                case 'high_humidity':
-                    $high_humidity_company = [
-                        'id' => $resultCompany->getId(),
-                        'name' => $resultCompany->getName(),
-                        'phone' => $resultCompany->getPhone(),
-                        'mail' => $resultCompany->getMail(),
-                        'type' => $resultCompany->getType(),
+            $incidents = [];
+            foreach ($resultsAgenda as $resultAgenda) {
+                if ($resultCompany->getType() == $resultAgenda->getType()) {
+                    $incidents[] = [
+                        'incident_id' => $resultAgenda->getId(),
+                        'incident_title' => $resultAgenda->getTitle(),
+                        'incident_date' => $resultAgenda->getDate()->format('Y-m-d H:i:s'),
+                        'incident_type' => $resultAgenda->getType(),
+                        'incident_status' => $resultAgenda->getStatus(),
                     ];
-                    break;
-                case 'defective_air_conditioning':
-                    $defective_air_conditioning_company = [
-                        'id' => $resultCompany->getId(),
-                        'name' => $resultCompany->getName(),
-                        'phone' => $resultCompany->getPhone(),
-                        'mail' => $resultCompany->getMail(),
-                        'type' => $resultCompany->getType(),
-                    ];
-                    break;
-                case 'heat_leak':
-                    $heat_leak_company = [
-                        'id' => $resultCompany->getId(),
-                        'name' => $resultCompany->getName(),
-                        'phone' => $resultCompany->getPhone(),
-                        'mail' => $resultCompany->getMail(),
-                        'type' => $resultCompany->getType(),
-                    ];
-                    break;
-                default:
-                    break;
+                }
             }
+            $response[$resultCompany->getType()][] = [
+                'incidents' => $incidents,
+                'company' => [
+                    'id' => $resultCompany->getId(),
+                    'name' => $resultCompany->getName(),
+                    'phone' => $resultCompany->getPhone(),
+                    'mail' => $resultCompany->getMail(),
+                    'type' => $resultCompany->getType(),
+                ],
+            ];
         }
-
-        $response = [
-            'heat_leak' => [
-                'incidents' => isset($heat_leak_incidents) ? $heat_leak_incidents : [],
-                'company' => isset($heat_leak_company) ? $heat_leak_company : [],
-            ],
-            'defective_air_conditioning' => [
-                'incidents' => isset($defective_air_conditioning_incidents) ? $defective_air_conditioning_incidents : [],
-                'company' => isset($defective_air_conditioning_company) ? $defective_air_conditioning_company : [],
-            ],
-            'high_humidity' => [
-                'incidents' => isset($high_humidity_incidents) ? $high_humidity_incidents : [],
-                'company' => isset($high_humidity_company) ? $high_humidity_company : [],
-            ],
-        ];
 
         return new JsonResponse($response);
     }
