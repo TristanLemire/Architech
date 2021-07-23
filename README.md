@@ -95,9 +95,15 @@ le projet front -> https://github.com/LimongiVirgil/Architech
 
 ## Liste des routes disponibles :
 
-### Récupère toutes les prochaines interventions pour un bâtiment donné.
+### Récupère toutes les prochaines interventions de mois pour un bâtiment donné.
 ```shell script
 `/api/dashboard/futureEvent/<BUILDING_ID>` 
+```
+
+
+### Récupère toutes les prochaines interventions pour un bâtiment donné.
+```shell script
+`/api/dashboard/allFutureEvent/<BUILDING_ID>` 
 ```
 
 ### Récupère l'évolution annuelle des incidents pour un bâtiment donné.
@@ -165,6 +171,7 @@ NODE | TYPE DE CAPTEUR
 042301 | 112 (température) , 114 (humidité) , 116 (pression atm)
 042302 | 112 (température) , 114 (humidité) , 116 (pression atm)
 042304 | 112 (température) , 114 (humidité) , 116 (pression atm)
+042211 | 112 (température) , 114 (humidité) , 116 (pression atm)
 
 
 
