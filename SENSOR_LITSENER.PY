@@ -39,6 +39,7 @@ NODE_ID = [
     "042301",
     "042302",
     "042304",
+    "042211",
 ]
 # ID du sensor
 SENSOR_ID_PRESS = 116
