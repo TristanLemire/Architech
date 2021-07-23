@@ -120,7 +120,7 @@ INSERT INTO intervention (id,datetime,company_id,comment) VALUES (15,'2021-1-27 
 INSERT INTO intervention (id,datetime,company_id) VALUES (16,'2020-12-30 09:00:00',3);
 INSERT INTO intervention (id,datetime,company_id,comment) VALUES (17,'2020-8-15 10:00:00',2,'intervention sur dans salle B109 et A204 ');
 INSERT INTO intervention (id,datetime,company_id) VALUES (18,'2020-10-27 14:00:00',1);
-INSERT INTO intervention (id,datetime,company_id,comment) VALUES (17, '2020-11-15 10:00:00',2,'intervention sur dans salle A203');
+INSERT INTO intervention (id,datetime,company_id,comment) VALUES (19, '2020-11-15 10:00:00',2,'intervention sur dans salle A203');
 
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (1,1,'incident salle A101', '2021-7-4 14:13:54','high_humidity', 'assign',1);
 INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (2,5,'incident salle A105', '2021-1-14 12:45:26','defective_air_conditioning', 'in_progress');
