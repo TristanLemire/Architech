@@ -34,6 +34,7 @@ class InterventionRepository extends ServiceEntityRepository
             ->setParameter('id_building', $id_building)
             ->andWhere('MONTH(i.datetime) = MONTH(CURRENT_DATE())')
             ->andWhere('YEAR(i.datetime) = YEAR(CURRENT_DATE())')
+            ->andWhere('DAY(i.datetime) >= DAY(CURRENT_DATE())')
             ->orderBy('i.datetime');;
 
         $query = $qb->getQuery();
@@ -54,6 +55,7 @@ class InterventionRepository extends ServiceEntityRepository
             ->setParameter('id_building', $id_building)
             ->andWhere('MONTH(i.datetime) >= MONTH(CURRENT_DATE())')
             ->andWhere('YEAR(i.datetime) >= YEAR(CURRENT_DATE())')
+            ->andWhere('DAY(i.datetime) >= DAY(CURRENT_DATE())')
             ->orderBy('i.datetime');;
 
         $query = $qb->getQuery();
