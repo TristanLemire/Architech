@@ -48,7 +48,7 @@ Virgil Limongi | `Front-end`
 Thomas Evano | `Front-end`
 Pierre-Alain Agnan | `Front-end`
 Selima Ben Kebaier | `Front-end`
-Camille Marquand | `Front-end`
+Camille Marquand | `Design`
 
 
 ## Disclaimer
