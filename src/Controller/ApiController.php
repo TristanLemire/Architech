@@ -82,6 +82,8 @@ class ApiController extends AbstractController
             ];
         }
 
+
+
         foreach ($interventions as $intervention) {
 
             if (array_key_exists($intervention["intervention_datetime"]->format('m') . "-" . $intervention["intervention_datetime"]->format('Y'), $response)) {
@@ -202,10 +204,6 @@ class ApiController extends AbstractController
     public function agenda(int $id_building, IncidentRepository $incidentRepository, CompanyRepository $company, JsonMessage $jsonMessage): JsonResponse
     {
         $resultsAgenda = $incidentRepository->agenda($id_building);
-
-        if (!$resultsAgenda) {
-            return $jsonMessage->getEmptyDataMessage();
-        }
 
         $resultsCompany = $company->getCompany($id_building);
 
