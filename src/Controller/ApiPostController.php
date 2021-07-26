@@ -21,7 +21,7 @@ class ApiPostController extends AbstractController
    */
   public function index(int $id_building, Request $request, JsonMessage $jsonMessage, EntityManagerInterface $em, IncidentRepository $incidentRepository, CompanyRepository $companyRepository): JsonResponse
   {
-    //     EXEMPLE  https://localhost:8000/api/post/agenda/new_intervention/1?date=2021-2-14&time=09:00&type="defective_air_conditioning"&id_company=1&incident_ids[]=2&comment=coucou
+    //     EXEMPLE  https://localhost:8000/api/post/agenda/new_intervention/1?date=2021-2-14&time=09:00&id_company=1&incident_ids[]=2&comment=coucou
     $response = [];
     $errors = [];
 
