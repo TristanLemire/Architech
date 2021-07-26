@@ -23,7 +23,7 @@ class BuildingRepository extends ServiceEntityRepository
     public function findInfoByIdBuilding(int $id_building): array
     {
         $results = $this->createQueryBuilder('b')
-          ->select('
+            ->select('
             b.name as name_building, 
             b.phone as phone_building, 
             b.city, 
@@ -37,17 +37,49 @@ class BuildingRepository extends ServiceEntityRepository
             m.mail AS manager_mail,
             COUNT(s.id) AS number_sensor
           ')
-          ->addSelect("(SELECT COUNT(class.id)
+            ->addSelect("(SELECT COUNT(class.id)
            FROM App\Entity\Classroom AS class
            WHERE class.building = {$id_building}) AS number_rooms
           ")
-          ->leftJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'c.building = b.id')
-          ->leftJoin('App\Entity\Manager', 'm',   Expr\Join::WITH,  'b.manager = m.id')
-          ->leftJoin('App\Entity\Sensor', 's',   Expr\Join::WITH,  's.classroom = c.id')
-          ->where('b.id = :id_building')
-          ->setParameter('id_building', $id_building)
-          ->getQuery()
-          ->getResult();
+            ->leftJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'c.building = b.id')
+            ->leftJoin('App\Entity\Manager', 'm',   Expr\Join::WITH,  'b.manager = m.id')
+            ->leftJoin('App\Entity\Sensor', 's',   Expr\Join::WITH,  's.classroom = c.id')
+            ->where('b.id = :id_building')
+            ->setParameter('id_building', $id_building)
+            ->getQuery()
+            ->getResult();
+
+        return $results;
+    }
+
+    public function getParamsInfos(int $id_building): array
+    {
+        $results = $this->createQueryBuilder('b')
+            ->select('
+            b.name as name_building, 
+            b.phone as phone_building, 
+            b.city, 
+            b.address, 
+            b.zipcode,
+            b.mail,
+                m.last_name, 
+            m.first_name, 
+            m.phone AS phone_manager, 
+            m.gender,
+            m.mail AS manager_mail,
+            COUNT(s.id) AS number_sensor
+          ')
+            ->addSelect("(SELECT COUNT(class.id)
+           FROM App\Entity\Classroom AS class
+           WHERE class.building = {$id_building}) AS number_rooms
+          ")
+            ->leftJoin('App\Entity\Classroom', 'c',   Expr\Join::WITH,  'c.building = b.id')
+            ->leftJoin('App\Entity\Manager', 'm',   Expr\Join::WITH,  'b.manager = m.id')
+            ->leftJoin('App\Entity\Sensor', 's',   Expr\Join::WITH,  's.classroom = c.id')
+            ->where('b.id = :id_building')
+            ->setParameter('id_building', $id_building)
+            ->getQuery()
+            ->getResult();
 
         return $results;
     }

@@ -244,4 +244,55 @@ class ApiController extends AbstractController
 
         return new JsonResponse($response);
     }
+
+    /**
+     * @Route("/api/params/{id_building}", name="ingo_param")
+     */
+    public function getParams(int $id_building, BuildingRepository $buildingRepository, CompanyRepository $companyRepository, JsonMessage $jsonMessage): JsonResponse
+    {
+        $response = [];
+        $resultsBuilding = $buildingRepository->getParamsInfos($id_building);
+
+        if (!$resultsBuilding) {
+            return $jsonMessage->getEmptyDataMessage();
+        }
+
+        $resultsCompanys = $companyRepository->getCompany($id_building);
+
+        if (!$resultsCompanys) {
+            return $jsonMessage->getEmptyDataMessage();
+        }
+
+        foreach ($resultsCompanys as $resultsCompany) {
+            $companys[$resultsCompany->getId()] = [
+                'company_id' => $resultsCompany->getId(),
+                'company_phone' =>  $resultsCompany->getPhone(),
+                'company_mail' =>  $resultsCompany->getMail(),
+                'company_type' =>  $resultsCompany->getType(),
+            ];
+        }
+
+
+        $response = [
+            'manager' => [
+                'last_name' => $resultsBuilding[0]['last_name'],
+                'first_name' => $resultsBuilding[0]['first_name'],
+                'phone_manager' => $resultsBuilding[0]['phone_manager'],
+                'gender' => $resultsBuilding[0]['gender'],
+                'manager_mail' => $resultsBuilding[0]['mail'],
+            ],
+            'building' => [
+                'name_building' => $resultsBuilding[0]['name_building'],
+                'phone_building' => $resultsBuilding[0]['phone_building'],
+                'address' => $resultsBuilding[0]['address'],
+                'zipcode' => $resultsBuilding[0]['zipcode'],
+                'mail' => $resultsBuilding[0]['mail'],
+                'city' => $resultsBuilding[0]['city'],
+            ],
+            'companis' => $companys,
+        ];
+
+
+        return new JsonResponse($response);
+    }
 }
