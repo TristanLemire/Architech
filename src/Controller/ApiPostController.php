@@ -21,7 +21,7 @@ class ApiPostController extends AbstractController
    */
   public function index(int $id_building, Request $request, JsonMessage $jsonMessage, EntityManagerInterface $em, IncidentRepository $incidentRepository, CompanyRepository $companyRepository): JsonResponse
   {
-    //     EXEMPLE  https://localhost:8000/api/post/agenda/new_intervention/1?date=2021-2-14&time=09:00&type="defective_air_conditioning"&id_company=1&interventions_id[]=2&comment=coucou
+    //     EXEMPLE  https://localhost:8000/api/post/agenda/new_intervention/1?date=2021-2-14&time=09:00&type="defective_air_conditioning"&id_company=1&incident_ids[]=2&comment=coucou
     $response = [];
     $errors = [];
 
@@ -30,7 +30,7 @@ class ApiPostController extends AbstractController
       'time',
       'comment',
       'id_company',
-      'interventions_id'
+      'incident_ids'
     ];
 
     foreach ($params as $param) {
@@ -53,7 +53,7 @@ class ApiPostController extends AbstractController
     $em->persist($newIntervention);
     $em->flush();
 
-    foreach ($routeParameters['interventions_id'] as $id) {
+    foreach ($routeParameters['incident_ids'] as $id) {
       $updateIncident = $incidentRepository->findOneBy(['id' => $id]);
       $updateIncident->setIntervention($newIntervention);
 
