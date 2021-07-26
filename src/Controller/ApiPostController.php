@@ -77,20 +77,19 @@ class ApiPostController extends AbstractController
           throw new \Exception(serialize(["incident_id° {$id} don't exist"]));
         }
 
-        $updateIncident->setIntervention($newIntervention);
+        $updateIncident->setIntervention($newIntervention)->setStatus('assign');
         $em->persist($updateIncident);
         $em->flush();
       }
 
-//      $response = new Response($response);
-//      $response->headers->set('Content-Type', 'application/json');
+      //      $response = new Response($response);
+      //      $response->headers->set('Content-Type', 'application/json');
 
       return new JsonResponse([
         "success" => true,
         "response" => $response
       ]);
-
-    }catch (\Exception $exception) {
+    } catch (\Exception $exception) {
       return new JsonResponse([
         "success" => false,
         "response" => unserialize($exception->getMessage())
