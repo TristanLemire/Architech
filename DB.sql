@@ -153,3 +153,6 @@ INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (23,8,'incident salle A203', '2020-9-5 12:04:56','high_humidity', 'assign',18);
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (24,8,'incident salle A203', '2020-10-5 12:04:56','heat_leak', 'assign',19);
 INSERT INTO incident (id, classroom_id, title, date, type, status, intervention_id) VALUES (25,24,'incident salle A211', '2020-10-5 12:04:56','heat_leak', 'assign',20);
+INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (29,24,'incident salle A211', '2021-2-14 13:45:26','heat_leak', 'in_progress');
+INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (27,1,'incident salle A101', '2021-6-14 16:05:26','heat_leak', 'in_progress');
+INSERT INTO incident (id, classroom_id, title, date, type, status) VALUES (28,6,'incident salle A101', '2021-7-20 6:05:26','heat_leak', 'in_progress');
