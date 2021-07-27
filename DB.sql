@@ -104,7 +104,7 @@ INSERT INTO sensor (id, classroom_id, type, node_id, sensor_id) VALUES (72,23,'P
 
 INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (1,1,'humidity Controller','contact@humidityController.com','0112345678','high_humidity');
 INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (2,1,'Solar','contact@solar.com','0134567890','heat_leak');
-INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (3,1,'Cristal Air,','contact@cristalair.com','0134567890','defective_air_conditioning');
+INSERT INTO company (id,building_id,name,mail,phone,type) VALUES (3,1,'Cristal Air','contact@cristalair.com','0134567890','defective_air_conditioning');
 
 INSERT INTO intervention (id,datetime,company_id,comment) VALUES (1,'2021-8-16 14:00:00',1,'intervention sur dans salle A101 ');
 INSERT INTO intervention (id,datetime,company_id) VALUES (2,'2021-7-8 10:00:00',2);
